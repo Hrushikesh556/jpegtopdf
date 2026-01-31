@@ -1,31 +1,48 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import ImageConverter from './components/ImageConverter';
-import SEOContent from './components/SEOContent';
-import PrivacyPolicy from './components/PrivacyPolicy';
+import { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-function HomePage() {
+// Lazy load pages for better performance
+const HomePage = lazy(() => import('./pages/HomePage'));
+const JpgToPdfPage = lazy(() => import('./pages/JpgToPdfPage'));
+const PngToPdfPage = lazy(() => import('./pages/PngToPdfPage'));
+const PdfToJpgPage = lazy(() => import('./pages/PdfToJpgPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+
+// Loading Spinner Component
+function LoadingSpinner() {
   return (
-    <>
-      <ImageConverter />
-      <SEOContent />
-    </>
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-16 h-16 mx-auto mb-4 relative">
+          <div className="absolute inset-0 rounded-full border-4 border-violet-200"></div>
+          <div className="absolute inset-0 rounded-full border-4 border-violet-600 border-t-transparent animate-spin"></div>
+        </div>
+        <p className="text-slate-600 font-medium">Loading...</p>
+      </div>
+    </div>
   );
 }
 
 export function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-zinc-50 flex flex-col">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-violet-50/30 to-indigo-50/50 flex flex-col">
         <Navbar />
-        <div className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/jpg-to-pdf" element={<HomePage />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          </Routes>
-        </div>
+        <main className="flex-1">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/jpg-to-pdf" element={<JpgToPdfPage />} />
+              <Route path="/png-to-pdf" element={<PngToPdfPage />} />
+              <Route path="/pdf-to-jpg" element={<PdfToJpgPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPage />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
       </div>
     </HashRouter>

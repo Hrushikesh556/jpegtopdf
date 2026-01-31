@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1e293b;
+}
+
+/* Selection color */
+::selection {
+  background-color: #ddd6fe;
+  color: #4c1d95;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #8b5cf6;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -12,61 +36,43 @@
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Selection color */
-::selection {
-  background: #8b5cf6;
-  color: white;
-}
-
-/* Focus outline for accessibility */
-*:focus-visible {
-  outline: 2px solid #8b5cf6;
-  outline-offset: 2px;
-}
-
-/* Animation for drag and drop */
-@keyframes pulse-border {
-  0%, 100% {
-    border-color: #8b5cf6;
-  }
-  50% {
-    border-color: #a78bfa;
-  }
-}
-
-.animate-pulse-border {
-  animation: pulse-border 1s ease-in-out infinite;
-}
-
-/* Prose customization for SEO content */
-.prose h2 {
-  scroll-margin-top: 80px;
-}
-
-.prose h3 {
-  scroll-margin-top: 80px;
-}
-
-/* Details/Summary styling */
+/* Details/Summary animation */
 details summary::-webkit-details-marker {
   display: none;
 }
 
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
+details[open] summary ~ * {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  button, a, input, select {
+    touch-action: manipulation;
+  }
+}
+
+/* Prevent zoom on iOS inputs */
+@media screen and (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
   }
 }

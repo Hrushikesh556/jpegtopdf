@@ -1,60 +1,92 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Add shadow on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
+  const navLinks = [
+    { path: '/', label: 'JPG to PDF' },
+    { path: '/png-to-pdf', label: 'PNG to PDF' },
+    { path: '/pdf-to-jpg', label: 'PDF to JPG' },
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg">
-              <svg className="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+    <nav className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${scrolled ? 'shadow-md' : 'shadow-sm'}`}>
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                 <path d="M14 2v6h6" />
                 <path d="M9 15l2 2 4-4" />
               </svg>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent hidden sm:block">
-              JPG to PDF Converter
-            </span>
-            <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent sm:hidden">
+            <span className="text-lg font-bold text-slate-800 hidden sm:block">
               JPG to PDF
             </span>
           </Link>
-          
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            <Link 
-              to="/" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                isActive('/') || isActive('/jpg-to-pdf')
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isActive(link.path)
+                    ? 'bg-violet-100 text-violet-700'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              to="/about"
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                isActive('/about')
                   ? 'bg-violet-100 text-violet-700'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
               }`}
             >
-              JPG to PDF
-            </Link>
-            <Link 
-              to="/privacy-policy" 
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                isActive('/privacy-policy')
-                  ? 'bg-violet-100 text-violet-700'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-              }`}
-            >
-              Privacy
+              About
             </Link>
           </div>
 
+          {/* Desktop CTA */}
+          <div className="hidden md:block">
+            <a
+              href="#converter"
+              className="px-4 py-2 bg-violet-600 text-white text-sm font-medium rounded-lg hover:bg-violet-700 transition-colors"
+            >
+              Start Free
+            </a>
+          </div>
+
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100"
+            className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -68,37 +100,57 @@ export default function Navbar() {
             )}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-slate-100">
-            <div className="flex flex-col space-y-2">
-              <Link 
-                to="/" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/') || isActive('/jpg-to-pdf')
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-slate-100 bg-white">
+          <div className="px-4 py-3 space-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  isActive(link.path)
                     ? 'bg-violet-100 text-violet-700'
-                    : 'text-slate-600 hover:bg-slate-100'
+                    : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                JPG to PDF Converter
+                {link.label}
               </Link>
-              <Link 
-                to="/privacy-policy" 
+            ))}
+            <Link
+              to="/about"
+              className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                isActive('/about')
+                  ? 'bg-violet-100 text-violet-700'
+                  : 'text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              About
+            </Link>
+            <Link
+              to="/privacy-policy"
+              className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                isActive('/privacy-policy')
+                  ? 'bg-violet-100 text-violet-700'
+                  : 'text-slate-600 hover:bg-slate-50'
+              }`}
+            >
+              Privacy Policy
+            </Link>
+            <div className="pt-2">
+              <a
+                href="#converter"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive('/privacy-policy')
-                    ? 'bg-violet-100 text-violet-700'
-                    : 'text-slate-600 hover:bg-slate-100'
-                }`}
+                className="block w-full py-3 bg-violet-600 text-white text-sm font-medium rounded-lg text-center hover:bg-violet-700 transition-colors"
               >
-                Privacy Policy
-              </Link>
+                Start Converting
+              </a>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
