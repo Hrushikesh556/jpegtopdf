@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -44,6 +45,7 @@ export function App() {
           </Suspense>
         </main>
         <Footer />
+        <Analytics />
       </div>
     </HashRouter>
   );
