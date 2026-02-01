@@ -3,31 +3,229 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #1e293b;
 }
 
-/* Selection color */
-::selection {
-  background-color: #ddd6fe;
-  color: #4c1d95;
+/* Reduce CLS - Set fixed heights */
+.nav-height { height: 64px; }
+.hero-section { min-height: 100px; }
+.upload-area { min-height: 180px; }
+.image-thumb { aspect-ratio: 1; }
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Focus styles */
-:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px white, 0 0 0 4px #8b5cf6;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.4); }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.3s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 2s linear infinite;
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 8px;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.gradient-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f3e8ff 100%);
+}
+
+/* Interactive elements */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hover {
+  transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+}
+
+.btn-hover:active {
+  transform: translateY(0);
+}
+
+/* Upload zone styles */
+.upload-zone {
+  transition: all 0.3s ease;
+  border: 2px dashed #cbd5e1;
+}
+
+.upload-zone:hover {
+  border-color: #818cf8;
+  background: rgba(99, 102, 241, 0.03);
+}
+
+.upload-zone.dragging {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+  transform: scale(1.01);
+}
+
+/* Image grid item */
+.image-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.04);
+  z-index: 10;
+}
+
+/* Progress bar */
+.progress-bar {
   height: 8px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  transition: width 0.3s ease;
+}
+
+/* Mobile-specific */
+@media (max-width: 640px) {
+  .upload-area { min-height: 150px; }
+  .card-hover:hover { transform: none; }
+  .image-item:hover { transform: none; }
+}
+
+/* Input styles */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -35,44 +233,30 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
+  background: linear-gradient(180deg, #a5b4fc, #818cf8);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: linear-gradient(180deg, #818cf8, #6366f1);
 }
 
-/* Details/Summary animation */
-details summary::-webkit-details-marker {
-  display: none;
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
 }
 
-details[open] summary ~ * {
-  animation: slideDown 0.2s ease-out;
+/* Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.15);
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Hide elements initially for animation */
+.animate-on-scroll {
+  opacity: 0;
 }
 
-/* Mobile touch improvements */
-@media (hover: none) and (pointer: coarse) {
-  button, a, input, select {
-    touch-action: manipulation;
-  }
-}
-
-/* Prevent zoom on iOS inputs */
-@media screen and (max-width: 640px) {
-  input, select, textarea {
-    font-size: 16px !important;
-  }
+.animate-on-scroll.visible {
+  opacity: 1;
 }

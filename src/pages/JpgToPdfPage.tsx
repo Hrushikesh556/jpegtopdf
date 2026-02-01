@@ -1,62 +1,90 @@
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import ImageConverter from '../components/ImageConverter';
 
 export default function JpgToPdfPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 via-indigo-50/30 to-white">
+      <Navbar currentPath="/jpg-to-pdf" />
+      
       {/* Hero */}
-      <section className="bg-gradient-to-b from-violet-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-violet-100 text-violet-700 rounded-full text-xs font-medium mb-4">
-            <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
-            100% Free • No Signup Required
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full blur-3xl opacity-50 animate-float" />
+        </div>
+        
+        <div className="relative max-w-4xl mx-auto px-4 pt-8 sm:pt-12 pb-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md mb-6 animate-fade-in">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span className="text-sm font-medium text-gray-600">100% Free • Works Offline</span>
           </div>
           
-          <h1 className="text-2xl sm:text-4xl font-bold text-slate-900 mb-3">
-            JPG to PDF Converter
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
+            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">JPG to PDF</span> Converter
           </h1>
           
-          <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
-            Convert your JPG, JPEG, and PNG images to PDF instantly. Free, fast, and secure.
+          <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto animate-fade-in">
+            Transform your JPG and JPEG images into professional PDF documents in seconds. No signup required.
           </p>
         </div>
       </section>
 
       {/* Converter */}
-      <ImageConverter />
+      <section className="py-6">
+        <ImageConverter />
+      </section>
 
-      {/* Features */}
-      <section className="max-w-4xl mx-auto px-4 py-10">
-        <h2 className="text-lg font-bold text-slate-900 mb-4 text-center">Key Features</h2>
-        <div className="grid sm:grid-cols-3 gap-4">
-          <div className="p-4 bg-white rounded-lg border border-slate-200 text-center">
-            <div className="w-10 h-10 mx-auto mb-3 bg-violet-100 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
+      {/* Info Section */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8">
+            Convert JPG to PDF Online — Fast & Free
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-2xl">
+              <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="text-xl">🖼️</span> Supports All JPG Formats
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Our converter handles JPG, JPEG, and even PNG files. Upload multiple images at once and combine them into a single PDF document.
+              </p>
             </div>
-            <h3 className="font-semibold text-slate-800 text-sm mb-1">Secure & Private</h3>
-            <p className="text-xs text-slate-600">Files processed locally in your browser</p>
-          </div>
-          <div className="p-4 bg-white rounded-lg border border-slate-200 text-center">
-            <div className="w-10 h-10 mx-auto mb-3 bg-violet-100 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+            
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl">
+              <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="text-xl">🔒</span> Privacy Guaranteed
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Your images are processed entirely in your browser. Nothing is uploaded to any server, ensuring complete privacy.
+              </p>
             </div>
-            <h3 className="font-semibold text-slate-800 text-sm mb-1">Instant Conversion</h3>
-            <p className="text-xs text-slate-600">No waiting, immediate results</p>
-          </div>
-          <div className="p-4 bg-white rounded-lg border border-slate-200 text-center">
-            <div className="w-10 h-10 mx-auto mb-3 bg-violet-100 rounded-lg flex items-center justify-center">
-              <svg className="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-              </svg>
+            
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl">
+              <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="text-xl">📐</span> Customizable Settings
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Choose your page size (A4, Letter, or Auto), set margins, and select portrait or landscape orientation.
+              </p>
             </div>
-            <h3 className="font-semibold text-slate-800 text-sm mb-1">Custom Settings</h3>
-            <p className="text-xs text-slate-600">Page size, margins, orientation</p>
+            
+            <div className="bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-2xl">
+              <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="text-xl">⚡</span> Instant Download
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Get your PDF immediately after conversion. No email required, no waiting in queues, no watermarks.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-    </>
+
+      <Footer />
+    </div>
   );
 }
