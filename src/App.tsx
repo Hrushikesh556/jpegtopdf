@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -81,5 +82,10 @@ function Router() {
 }
 
 export default function App() {
-  return <Router />;
+  return (
+    <>
+      <Router />
+      <Analytics />
+    </>
+  );
 }
