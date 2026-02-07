@@ -1,0 +1,37 @@
+# Robots.txt for JPG to PDF Converter
+# https://convertjpgtopdf.online
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://convertjpgtopdf.online/sitemap.xml
+
+# Allow Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Allow Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Allow Google Images
+User-agent: Googlebot-Image
+Allow: /
+
+# Disallow admin or API paths (if any)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.env
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /jpg-to-pdf
+Allow: /png-to-pdf
+Allow: /pdf-to-jpg
+Allow: /about
+Allow: /contact
+Allow: /privacy-policy
