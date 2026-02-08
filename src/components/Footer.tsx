@@ -1,59 +1,114 @@
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+import { ResponsiveAd } from './AdBanner';
 
-  const toolLinks = [
-    { href: '/jpg-to-pdf', label: 'JPG to PDF' },
-    { href: '/png-to-pdf', label: 'PNG to PDF' },
-    { href: '/pdf-to-jpg', label: 'PDF to JPG' },
-  ];
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
 
-  const companyLinks = [
-    { href: '/about', label: 'About Us' },
-    { href: '/privacy-policy', label: 'Privacy Policy' },
-    { href: '/contact', label: 'Contact Us' },
-    { href: '/#faq', label: 'FAQ' },
-  ];
+const PAGE_PATHS: Record<string, string> = {
+  'home': '/',
+  'png-to-pdf': '/png-to-pdf',
+  'jpeg-to-pdf': '/jpeg-to-pdf',
+  'image-to-pdf': '/image-to-pdf',
+  'how-to-guide': '/how-to-convert-jpg-to-pdf',
+  'faq': '/faq',
+  'blog': '/blog',
+  'about': '/about',
+  'contact': '/contact',
+  'privacy': '/privacy-policy',
+  'terms': '/terms-of-service',
+  'sitemap': '/sitemap',
+};
 
+function FooterLink({ page, children, onNavigate }: {
+  page: string;
+  children: React.ReactNode;
+  onNavigate: (page: string) => void;
+}) {
+  const href = PAGE_PATHS[page] || '/';
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white mt-auto">
+    <a
+      href={href}
+      onClick={(e) => {
+        e.preventDefault();
+        onNavigate(page);
+      }}
+      className="hover:text-white transition"
+    >
+      {children}
+    </a>
+  );
+}
+
+export function Footer({ onNavigate }: FooterProps) {
+  return (
+    <footer className="bg-gray-900 text-gray-400 mt-16" role="contentinfo">
+      {/* Footer Ad */}
+      <div className="bg-gray-800 py-6 px-4">
+        <div className="max-w-6xl mx-auto">
+          <ResponsiveAd adSlot="9012345678" label="Sponsored" />
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <a href="/" className="inline-flex items-center gap-2.5 mb-4 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+          <div className="col-span-2 md:col-span-1 lg:col-span-2">
+            <a
+              href="/"
+              onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+              className="flex items-center gap-2 mb-4 hover:opacity-80 transition"
+            >
+              <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xs">
+                PDF
               </div>
-              <span className="font-bold text-xl">
-                <span className="text-indigo-400">JPG</span>toPDF
-              </span>
+              <span className="text-white font-bold">JPG to PDF Converter</span>
             </a>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Fast, free, and private image to PDF converter. No upload, no signup required.
+            <p className="text-sm leading-relaxed mb-4">
+              The fastest, most private way to convert images to PDF online. No signup, no server uploads,
+              100% free. Trusted by millions of users worldwide.
             </p>
+            <div className="flex items-center gap-2 text-xs">
+              <span className="bg-green-900/50 text-green-400 px-2 py-1 rounded-full">🔒 100% Private</span>
+              <span className="bg-blue-900/50 text-blue-400 px-2 py-1 rounded-full">⚡ Instant</span>
+              <span className="bg-orange-900/50 text-orange-400 px-2 py-1 rounded-full">🆓 Free</span>
+            </div>
           </div>
 
           {/* Tools */}
           <div>
-            <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
-              <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-              </svg>
-              Tools
-            </h4>
-            <ul className="space-y-2.5">
-              {toolLinks.map((link) => (
-                <li key={link.href}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-indigo-400 transition-colors" />
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">PDF Tools</h3>
+            <ul className="space-y-2.5 text-sm">
+              {[
+                { page: 'home', label: 'JPG to PDF' },
+                { page: 'png-to-pdf', label: 'PNG to PDF' },
+                { page: 'jpeg-to-pdf', label: 'JPEG to PDF' },
+                { page: 'image-to-pdf', label: 'Image to PDF' },
+              ].map((link) => (
+                <li key={link.page}>
+                  <FooterLink page={link.page} onNavigate={onNavigate}>
                     {link.label}
-                  </a>
+                  </FooterLink>
+                </li>
+              ))}
+              <li><span className="text-gray-600">PDF to JPG (Coming Soon)</span></li>
+              <li><span className="text-gray-600">Compress PDF (Coming Soon)</span></li>
+              <li><span className="text-gray-600">Merge PDF (Coming Soon)</span></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Resources</h3>
+            <ul className="space-y-2.5 text-sm">
+              {[
+                { page: 'how-to-guide', label: 'How-To Guide' },
+                { page: 'faq', label: 'FAQ' },
+                { page: 'blog', label: 'Blog & Guides' },
+              ].map((link) => (
+                <li key={link.page}>
+                  <FooterLink page={link.page} onNavigate={onNavigate}>
+                    {link.label}
+                  </FooterLink>
                 </li>
               ))}
             </ul>
@@ -61,78 +116,59 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
-              <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              Company
-            </h4>
-            <ul className="space-y-2.5">
-              {companyLinks.map((link) => (
-                <li key={link.href}>
-                  <a 
-                    href={link.href}
-                    className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-2 group"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-600 group-hover:bg-indigo-400 transition-colors" />
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">Company</h3>
+            <ul className="space-y-2.5 text-sm">
+              {[
+                { page: 'about', label: 'About Us' },
+                { page: 'contact', label: 'Contact Us' },
+                { page: 'privacy', label: 'Privacy Policy' },
+                { page: 'terms', label: 'Terms of Service' },
+                { page: 'sitemap', label: 'Sitemap' },
+              ].map((link) => (
+                <li key={link.page}>
+                  <FooterLink page={link.page} onNavigate={onNavigate}>
                     {link.label}
-                  </a>
+                  </FooterLink>
                 </li>
               ))}
             </ul>
           </div>
+        </div>
 
-          {/* Trust Badges */}
-          <div>
-            <h4 className="font-semibold text-white mb-4 flex items-center gap-2">
-              <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              Trust
-            </h4>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                100% Free
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                No Sign Up
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Private & Secure
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                Works Offline
-              </div>
-            </div>
+        {/* Internal Link Cloud - SEO Keywords */}
+        <div className="border-t border-gray-800 mt-10 pt-8">
+          <h4 className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular Searches</h4>
+          <div className="flex flex-wrap gap-2 justify-center mb-8">
+            {[
+              'JPG to PDF', 'Convert JPG to PDF', 'JPEG to PDF', 'PNG to PDF', 'Image to PDF',
+              'Free JPG to PDF Converter', 'JPG to PDF Online', 'Photo to PDF', 'Picture to PDF',
+              'JPG to PDF No Signup', 'JPG to PDF Mobile', 'Combine Images to PDF',
+              'Convert Pictures to PDF', 'JPEG to PDF Free', 'Merge JPG to PDF',
+              'Multiple Images to PDF', 'JPG to PDF Without Login', 'Image to PDF Online Free',
+              'Convert Photo to PDF', 'Scan to PDF', 'JPG to PDF Converter Free',
+              'Batch Image to PDF', 'Convert Image to PDF Online',
+            ].map((keyword) => (
+              <a
+                key={keyword}
+                href="/"
+                onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
+                className="text-[10px] bg-gray-800 text-gray-500 hover:text-gray-300 px-2.5 py-1 rounded-full transition"
+              >
+                {keyword}
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-gray-800 pt-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">
-              © {currentYear} JPGtoPDF. All rights reserved.
-            </p>
-            <div className="flex items-center gap-4 text-sm text-gray-500">
-              <span>Made with</span>
-              <svg className="w-4 h-4 text-red-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-              </svg>
-              <span>for privacy</span>
-            </div>
-          </div>
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 pt-6 text-center text-sm">
+          <p className="text-gray-500">© {new Date().getFullYear()} JPG to PDF Converter. All rights reserved.</p>
+          <p className="mt-1 text-gray-600 text-xs">
+            Free online image to PDF converter. No login, no signup, no watermark. 100% client-side processing.
+          </p>
+          <p className="mt-2 text-gray-700 text-[10px]">
+            This site uses Google AdSense for advertising. We use minimal, non-intrusive ads to keep our tools free for everyone.
+          </p>
         </div>
       </div>
     </footer>

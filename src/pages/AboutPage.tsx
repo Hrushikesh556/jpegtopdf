@@ -1,149 +1,104 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { SEOHead } from '../components/SEOHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ResponsiveAd, InArticleAd } from '../components/AdBanner';
 
-export default function AboutPage() {
+interface AboutPageProps {
+  onNavigate: (page: string) => void;
+}
+
+export function AboutPage({ onNavigate }: AboutPageProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-white">
-      <Navbar currentPath="/about" />
-      
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full blur-3xl opacity-40" />
-        </div>
-        
-        <div className="relative max-w-4xl mx-auto px-4 pt-12 sm:pt-16 pb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 animate-fade-in">
-            About <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">JPGtoPDF</span>
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto animate-fade-in">
-            We built the simplest, fastest, and most private image to PDF converter on the web.
+    <div>
+      <SEOHead
+        title="About Us - JPG to PDF Converter | Free Online Image to PDF Tool"
+        description="Learn about JPG to PDF Converter — the fastest, most private way to convert images to PDF online. Our mission, technology, and commitment to keeping it free."
+        canonical="https://jpgtopdfconverter.com/about"
+        keywords="about jpg to pdf converter, about us, image to pdf tool, free pdf converter"
+      />
+      <Breadcrumbs
+        items={[
+          { label: 'Home', page: 'home' },
+          { label: 'About Us' },
+        ]}
+        onNavigate={onNavigate}
+      />
+      <div className="max-w-3xl mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">About JPG to PDF Converter</h1>
+
+        <ResponsiveAd adSlot="4455667788" className="mb-8" />
+
+        <div className="prose prose-gray max-w-none space-y-6">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            We built this tool because we were frustrated with existing JPG to PDF converters that are slow,
+            bloated with ads, require signups, or upload your private files to remote servers.
           </p>
-        </div>
-      </section>
 
-      {/* Mission */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-            <div className="gradient-primary p-8 text-white">
-              <h2 className="text-2xl font-bold mb-2">Our Mission</h2>
-              <p className="text-white/80">Making document conversion accessible to everyone</p>
-            </div>
-            
-            <div className="p-6 sm:p-8">
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Every day, millions of people need to convert images to PDF for work, school, or personal use. 
-                Yet most existing tools are slow, filled with ads, require sign-ups, or worse—upload your private 
-                files to unknown servers.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                We created JPGtoPDF to solve this problem. Our tool runs entirely in your browser, meaning your 
-                files never leave your device. It's fast, free, and respects your privacy. No signup required, 
-                no watermarks added, no limits imposed.
-              </p>
-            </div>
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
+            <h2 className="text-lg font-bold text-blue-900 mb-2">🎯 Our Mission</h2>
+            <p className="text-blue-800">
+              To provide the fastest, most private, and most user-friendly image-to-PDF conversion tool on the internet —
+              completely free, with no strings attached.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Values */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10">
-            What We Stand For
-          </h2>
-          
-          <div className="grid sm:grid-cols-3 gap-6">
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">What Makes Us Different</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              {
-                icon: '🔒',
-                title: 'Privacy First',
-                desc: 'Your files are processed locally in your browser. We never see, store, or have access to your images.',
-                color: 'from-green-500 to-emerald-600'
-              },
-              {
-                icon: '⚡',
-                title: 'Speed Matters',
-                desc: 'No uploads to slow servers. Conversion happens instantly on your device.',
-                color: 'from-yellow-500 to-orange-600'
-              },
-              {
-                icon: '💎',
-                title: 'Simplicity',
-                desc: 'A clean, intuitive interface that works. No confusing options or hidden features.',
-                color: 'from-indigo-500 to-purple-600'
-              }
-            ].map((value, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${value.color} flex items-center justify-center text-2xl mb-4 shadow-lg`}>
-                  {value.icon}
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2">{value.title}</h3>
-                <p className="text-gray-600 text-sm">{value.desc}</p>
+              { icon: '🖥️', title: 'Client-Side Processing', desc: 'Everything runs in your browser. Your files never touch our servers because we don\'t have file processing servers.' },
+              { icon: '🚀', title: 'Built for Speed', desc: 'Our tool loads in under 2 seconds and converts images to PDF almost instantly.' },
+              { icon: '📱', title: 'Mobile-First Design', desc: 'Designed from the ground up to work beautifully on mobile devices.' },
+              { icon: '✨', title: 'No Account Needed', desc: 'No signup, no login, no email required. Just open the tool and start converting.' },
+            ].map((item) => (
+              <div key={item.title} className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 className="font-semibold text-gray-900 mb-2">{item.icon} {item.title}</h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* How It Works */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10">
-            How It Works
-          </h2>
-          
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 sm:p-8">
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Browser-Based Processing</h3>
-                  <p className="text-gray-600 text-sm">When you upload images, they stay on your device. JavaScript processes them directly in your browser using the jsPDF library.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">No Server Uploads</h3>
-                  <p className="text-gray-600 text-sm">Unlike other tools, we don't upload your files anywhere. This makes conversion faster and keeps your data private.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Instant Download</h3>
-                  <p className="text-gray-600 text-sm">Once the PDF is generated, it downloads directly to your device. The file is created and destroyed locally—we never touch it.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <InArticleAd adSlot="5566778899" />
 
-      {/* CTA */}
-      <section className="py-12 px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Convert?</h2>
-          <p className="text-gray-600 mb-6">
-            Try our free JPG to PDF converter now. No signup, no hassle.
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">How We Keep It Free</h2>
+          <p className="text-gray-700 leading-relaxed">
+            We use non-intrusive <strong>Google AdSense</strong> advertisements to support free operation.
+            We believe in a fair exchange: you get a completely free, high-quality PDF converter, and we display
+            carefully placed ads that don't interfere with your workflow.
           </p>
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
-          >
-            Start Converting
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
-      </section>
 
-      <Footer />
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">Our Technology</h2>
+          <p className="text-gray-700 leading-relaxed">
+            Built with React for a fast user interface, jsPDF for client-side PDF generation, and dnd-kit for
+            smooth drag-and-drop reordering. Everything is optimized for performance, accessibility, and SEO.
+          </p>
+
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">Our Tools</h2>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li><button onClick={() => onNavigate('home')} className="text-blue-600 underline">JPG to PDF Converter</button> — Convert JPG images to PDF</li>
+            <li><button onClick={() => onNavigate('png-to-pdf')} className="text-blue-600 underline">PNG to PDF Converter</button> — Convert PNG images to PDF</li>
+            <li><button onClick={() => onNavigate('jpeg-to-pdf')} className="text-blue-600 underline">JPEG to PDF Converter</button> — Convert JPEG photos to PDF</li>
+            <li><button onClick={() => onNavigate('image-to-pdf')} className="text-blue-600 underline">Image to PDF Converter</button> — Convert any image to PDF</li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">Future Roadmap</h2>
+          <ul className="list-disc list-inside text-gray-700 space-y-2">
+            <li>PDF to JPG conversion</li>
+            <li>PDF compression</li>
+            <li>PDF merge tool</li>
+            <li>Page rotation</li>
+            <li>Watermark support</li>
+            <li>Batch processing improvements</li>
+          </ul>
+
+          <h2 className="text-xl font-bold text-gray-900 mt-8 mb-3">Get in Touch</h2>
+          <p className="text-gray-700 leading-relaxed">
+            Have questions, feedback, or suggestions? We'd love to hear from you.
+            Visit our <button onClick={() => onNavigate('contact')} className="text-blue-600 underline">Contact page</button> or
+            email us at <a href="mailto:contact@jpgtopdfconverter.com" className="text-blue-600 underline">contact@jpgtopdfconverter.com</a>.
+          </p>
+        </div>
+
+        <ResponsiveAd adSlot="6677889900" className="mt-8" />
+      </div>
     </div>
   );
 }

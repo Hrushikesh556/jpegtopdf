@@ -1,15 +1,13 @@
 {
-  "name": "JPG to PDF Converter - Free Online Image to PDF Tool",
+  "name": "JPG to PDF Converter - Free Online Tool",
   "short_name": "JPG to PDF",
-  "description": "Convert JPG, JPEG, PNG images to PDF online for free. No login required. 100% private, fast, and mobile-friendly.",
+  "description": "Convert JPG, JPEG, PNG images to PDF instantly. Free, private, no signup required.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#7c3aed",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "en",
-  "categories": ["productivity", "utilities"],
+  "theme_color": "#ef4444",
+  "orientation": "any",
+  "categories": ["utilities", "productivity"],
   "icons": [
     {
       "src": "/icon-192.png",
@@ -24,22 +22,6 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "JPG to PDF Converter Desktop View"
-    },
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "640x1136",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "JPG to PDF Converter Mobile View"
-    }
-  ],
-  "related_applications": [],
+  "screenshots": [],
   "prefer_related_applications": false
 }

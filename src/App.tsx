@@ -1,91 +1,190 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { Analytics } from '@vercel/analytics/react';
+import { useState, useEffect, useCallback } from 'react';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { CookieConsent } from './components/CookieConsent';
+import { SEOHead } from './components/SEOHead';
+import { Breadcrumbs } from './components/Breadcrumbs';
+import { ConverterPage } from './pages/ConverterPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { AboutPage } from './pages/AboutPage';
+import { TermsPage } from './pages/TermsPage';
+import { ContactPage } from './pages/ContactPage';
+import { FAQPage } from './pages/FAQPage';
+import { HowToGuidePage } from './pages/HowToGuidePage';
+import { BlogPage } from './pages/BlogPage';
+import { SitemapPage } from './pages/SitemapPage';
+import { JpegToPdfPage } from './pages/JpegToPdfPage';
+import { ImageToPdfPage } from './pages/ImageToPdfPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
-// Lazy load pages for better performance
-const HomePage = lazy(() => import('./pages/HomePage'));
-const JpgToPdfPage = lazy(() => import('./pages/JpgToPdfPage'));
-const PngToPdfPage = lazy(() => import('./pages/PngToPdfPage'));
-const PdfToJpgPage = lazy(() => import('./pages/PdfToJpgPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
+// Map URL paths to page IDs
+const PATH_TO_PAGE: Record<string, string> = {
+  '/': 'home',
+  '/jpg-to-pdf': 'home',
+  '/png-to-pdf': 'png-to-pdf',
+  '/jpeg-to-pdf': 'jpeg-to-pdf',
+  '/image-to-pdf': 'image-to-pdf',
+  '/privacy-policy': 'privacy',
+  '/about': 'about',
+  '/terms-of-service': 'terms',
+  '/contact': 'contact',
+  '/faq': 'faq',
+  '/how-to-convert-jpg-to-pdf': 'how-to-guide',
+  '/blog': 'blog',
+  '/sitemap': 'sitemap',
+};
 
-// Loading Spinner Component
-function LoadingSpinner() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-50 to-white">
-      <div className="text-center">
-        <div className="w-12 h-12 mx-auto mb-4 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-        <p className="text-gray-500 text-sm">Loading...</p>
-      </div>
-    </div>
-  );
+// Map page IDs to URL paths (for navigation)
+const PAGE_TO_PATH: Record<string, string> = {
+  'home': '/',
+  'png-to-pdf': '/png-to-pdf',
+  'jpeg-to-pdf': '/jpeg-to-pdf',
+  'image-to-pdf': '/image-to-pdf',
+  'privacy': '/privacy-policy',
+  'about': '/about',
+  'terms': '/terms-of-service',
+  'contact': '/contact',
+  'faq': '/faq',
+  'how-to-guide': '/how-to-convert-jpg-to-pdf',
+  'blog': '/blog',
+  'sitemap': '/sitemap',
+};
+
+function getPageFromPath(path: string): string {
+  // Remove trailing slash
+  const cleanPath = path === '/' ? '/' : path.replace(/\/$/, '');
+  return PATH_TO_PAGE[cleanPath] || '404';
 }
 
-// Simple router based on pathname
-function Router() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+export function App() {
+  const [currentPage, setCurrentPage] = useState(() => {
+    return getPageFromPath(window.location.pathname);
+  });
 
+  const handleNavigate = useCallback((page: string) => {
+    setCurrentPage(page);
+    const path = PAGE_TO_PATH[page] || '/';
+    window.history.pushState({ page }, '', path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  // Handle browser back/forward buttons
   useEffect(() => {
-    const handlePopState = () => setCurrentPath(window.location.pathname);
-    window.addEventListener('popstate', handlePopState);
-    
-    // Handle link clicks for SPA navigation
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      if (anchor && anchor.href && anchor.origin === window.location.origin) {
-        const path = anchor.pathname;
-        if (path !== currentPath && !anchor.hash) {
-          e.preventDefault();
-          window.history.pushState({}, '', path);
-          setCurrentPath(path);
-          window.scrollTo(0, 0);
-        }
+    const handler = (event: PopStateEvent) => {
+      if (event.state?.page) {
+        setCurrentPage(event.state.page);
+      } else {
+        setCurrentPage(getPageFromPath(window.location.pathname));
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  // Handle custom navigate events (from other components)
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        handleNavigate(customEvent.detail);
       }
     };
-    
-    document.addEventListener('click', handleClick);
-    return () => {
-      window.removeEventListener('popstate', handlePopState);
-      document.removeEventListener('click', handleClick);
-    };
-  }, [currentPath]);
+    window.addEventListener('navigate', handler);
+    return () => window.removeEventListener('navigate', handler);
+  }, [handleNavigate]);
 
-  // Route matching
+  // Set initial history state
+  useEffect(() => {
+    const path = PAGE_TO_PATH[currentPage] || '/';
+    window.history.replaceState({ page: currentPage }, '', path);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const renderPage = () => {
-    switch (currentPath) {
-      case '/':
-        return <HomePage />;
-      case '/jpg-to-pdf':
-        return <JpgToPdfPage />;
-      case '/png-to-pdf':
-        return <PngToPdfPage />;
-      case '/pdf-to-jpg':
-        return <PdfToJpgPage />;
-      case '/about':
-        return <AboutPage />;
-      case '/privacy-policy':
-        return <PrivacyPage />;
-      case '/contact':
-        return <ContactPage />;
+    switch (currentPage) {
+      case 'home':
+        return (
+          <>
+            <SEOHead
+              title="JPG to PDF Converter - Free Online Image to PDF Tool | No Signup"
+              description="Convert JPG to PDF online for free. No signup required. Upload multiple images, reorder pages, and download your PDF instantly. 100% private."
+              canonical="https://jpgtopdfconverter.com/"
+              keywords="jpg to pdf, convert jpg to pdf, image to pdf, free jpg to pdf converter, jpg to pdf online, jpg to pdf without login"
+            />
+            <ConverterPage
+              title="JPG to PDF Converter"
+              description="Convert JPG, JPEG, and PNG images to PDF instantly. Free, private, no signup required. All processing happens in your browser."
+            />
+          </>
+        );
+      case 'png-to-pdf':
+        return (
+          <>
+            <SEOHead
+              title="PNG to PDF Converter - Convert PNG to PDF Online Free | No Signup"
+              description="Convert PNG images to PDF online for free. Upload multiple PNG files, arrange them, and download your PDF in seconds. 100% private, no signup."
+              canonical="https://jpgtopdfconverter.com/png-to-pdf"
+              keywords="png to pdf, convert png to pdf, png to pdf converter, png to pdf online, png to pdf free"
+            />
+            <Breadcrumbs
+              items={[
+                { label: 'Home', page: 'home' },
+                { label: 'PNG to PDF Converter' },
+              ]}
+              onNavigate={handleNavigate}
+            />
+            <ConverterPage
+              title="PNG to PDF Converter"
+              description="Convert PNG images to PDF online for free. Upload multiple PNG files, arrange them, and download your PDF in seconds."
+              acceptTypes="image/png"
+            />
+          </>
+        );
+      case 'jpeg-to-pdf':
+        return <JpegToPdfPage onNavigate={handleNavigate} />;
+      case 'image-to-pdf':
+        return <ImageToPdfPage onNavigate={handleNavigate} />;
+      case 'privacy':
+        return <PrivacyPage onNavigate={handleNavigate} />;
+      case 'about':
+        return <AboutPage onNavigate={handleNavigate} />;
+      case 'terms':
+        return <TermsPage onNavigate={handleNavigate} />;
+      case 'contact':
+        return <ContactPage onNavigate={handleNavigate} />;
+      case 'faq':
+        return <FAQPage onNavigate={handleNavigate} />;
+      case 'how-to-guide':
+        return <HowToGuidePage onNavigate={handleNavigate} />;
+      case 'blog':
+        return <BlogPage onNavigate={handleNavigate} />;
+      case 'sitemap':
+        return <SitemapPage onNavigate={handleNavigate} />;
+      case '404':
+        return <NotFoundPage onNavigate={handleNavigate} />;
       default:
-        return <HomePage />;
+        return (
+          <>
+            <SEOHead
+              title="JPG to PDF Converter - Free Online Image to PDF Tool | No Signup"
+              description="Convert JPG to PDF online for free. No signup required."
+              canonical="https://jpgtopdfconverter.com/"
+            />
+            <ConverterPage
+              title="JPG to PDF Converter"
+              description="Convert JPG, JPEG, and PNG images to PDF instantly. Free, private, no signup required."
+            />
+          </>
+        );
     }
   };
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
-      {renderPage()}
-    </Suspense>
-  );
-}
-
-export default function App() {
-  return (
-    <>
-      <Router />
-      <Analytics />
-    </>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      <main className="flex-1" role="main">{renderPage()}</main>
+      <Footer onNavigate={handleNavigate} />
+      <CookieConsent />
+    </div>
   );
 }
