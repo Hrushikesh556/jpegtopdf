@@ -12,7 +12,7 @@ export function TermsPage({ onNavigate }: TermsPageProps) {
       <SEOHead
         title="Terms of Service - JPG to PDF Converter"
         description="Read the terms of service for using JPG to PDF Converter, a free online image to PDF conversion tool."
-        canonical="https://jpgtopdfconverter.com/terms-of-service"
+        canonical="https://convertjpgtopdf.online/terms-of-service"
         keywords="terms of service, jpg to pdf terms, usage policy"
       />
       <Breadcrumbs
@@ -121,8 +121,8 @@ export function TermsPage({ onNavigate }: TermsPageProps) {
             <h2 className="text-xl font-bold text-gray-900 mb-3">11. Contact</h2>
             <p className="text-gray-700 leading-relaxed">
               For questions about these Terms, contact us at{' '}
-              <a href="mailto:contact@jpgtopdfconverter.com" className="text-blue-600 underline">
-                contact@jpgtopdfconverter.com
+              <a href="mailto:contact@convertjpgtopdf.online" className="text-blue-600 underline">
+                contact@convertjpgtopdf.online
               </a>
             </p>
           </section>

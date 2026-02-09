@@ -12,7 +12,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
       <SEOHead
         title="Privacy Policy - JPG to PDF Converter | 100% Private & Secure"
         description="Privacy policy for JPG to PDF Converter. All processing happens in your browser. Files never leave your device. Learn about our data practices."
-        canonical="https://jpgtopdfconverter.com/privacy-policy"
+        canonical="https://convertjpgtopdf.online/privacy-policy"
         keywords="privacy policy, jpg to pdf privacy, secure file conversion, private pdf converter"
       />
       <Breadcrumbs
@@ -108,7 +108,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
             <h2 className="text-xl font-bold text-gray-900 mb-3">Contact Us</h2>
             <p className="text-gray-700 leading-relaxed">
               Questions about privacy? <button onClick={() => onNavigate('contact')} className="text-blue-600 underline">Contact us</button> or
-              email <a href="mailto:contact@jpgtopdfconverter.com" className="text-blue-600 underline">contact@jpgtopdfconverter.com</a>
+              email <a href="mailto:contact@convertjpgtopdf.online" className="text-blue-600 underline">contact@convertjpgtopdf.online</a>
             </p>
           </section>
 

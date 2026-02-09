@@ -22,7 +22,7 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
       <SEOHead
         title="Contact Us - JPG to PDF Converter | Get Help & Support"
         description="Contact the JPG to PDF Converter team for help, feedback, or business inquiries. We're here to help with any questions about our free image to PDF conversion tool."
-        canonical="https://jpgtopdfconverter.com/contact"
+        canonical="https://convertjpgtopdf.online/contact"
         keywords="contact jpg to pdf, support, help, feedback"
       />
       <Breadcrumbs
@@ -129,8 +129,8 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                   <span className="text-xl">📧</span>
                   <div>
                     <p className="text-sm font-semibold text-gray-800">Email</p>
-                    <a href="mailto:contact@jpgtopdfconverter.com" className="text-sm text-blue-600 hover:underline">
-                      contact@jpgtopdfconverter.com
+                    <a href="mailto:contact@convertjpgtopdf.online" className="text-sm text-blue-600 hover:underline">
+                      contact@convertjpgtopdf.online
                     </a>
                   </div>
                 </div>

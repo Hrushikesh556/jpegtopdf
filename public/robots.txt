@@ -1,5 +1,5 @@
 # robots.txt for JPG to PDF Converter
-# https://convertjpgtopdf.online/
+# https://jpgtopdfconverter.com
 
 User-agent: *
 Allow: /
@@ -16,7 +16,7 @@ User-agent: AdsBot-Google-Mobile
 Allow: /
 
 # Sitemap location
-Sitemap: https://convertjpgtopdf.online/sitemap.xml
+Sitemap: https://jpgtopdfconverter.com/sitemap.xml
 
 # Crawl-delay for polite bots
 User-agent: *

@@ -108,7 +108,7 @@ export function App() {
             <SEOHead
               title="JPG to PDF Converter - Free Online Image to PDF Tool | No Signup"
               description="Convert JPG to PDF online for free. No signup required. Upload multiple images, reorder pages, and download your PDF instantly. 100% private."
-              canonical="https://jpgtopdfconverter.com/"
+              canonical="https://convertjpgtopdf.online/"
               keywords="jpg to pdf, convert jpg to pdf, image to pdf, free jpg to pdf converter, jpg to pdf online, jpg to pdf without login"
             />
             <ConverterPage
@@ -123,7 +123,7 @@ export function App() {
             <SEOHead
               title="PNG to PDF Converter - Convert PNG to PDF Online Free | No Signup"
               description="Convert PNG images to PDF online for free. Upload multiple PNG files, arrange them, and download your PDF in seconds. 100% private, no signup."
-              canonical="https://jpgtopdfconverter.com/png-to-pdf"
+              canonical="https://convertjpgtopdf.online/png-to-pdf"
               keywords="png to pdf, convert png to pdf, png to pdf converter, png to pdf online, png to pdf free"
             />
             <Breadcrumbs
@@ -168,7 +168,7 @@ export function App() {
             <SEOHead
               title="JPG to PDF Converter - Free Online Image to PDF Tool | No Signup"
               description="Convert JPG to PDF online for free. No signup required."
-              canonical="https://jpgtopdfconverter.com/"
+              canonical="https://convertjpgtopdf.online/"
             />
             <ConverterPage
               title="JPG to PDF Converter"

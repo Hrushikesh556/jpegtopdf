@@ -12,7 +12,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       <SEOHead
         title="About Us - JPG to PDF Converter | Free Online Image to PDF Tool"
         description="Learn about JPG to PDF Converter — the fastest, most private way to convert images to PDF online. Our mission, technology, and commitment to keeping it free."
-        canonical="https://jpgtopdfconverter.com/about"
+        canonical="https://convertjpgtopdf.online/about"
         keywords="about jpg to pdf converter, about us, image to pdf tool, free pdf converter"
       />
       <Breadcrumbs
@@ -93,7 +93,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <p className="text-gray-700 leading-relaxed">
             Have questions, feedback, or suggestions? We'd love to hear from you.
             Visit our <button onClick={() => onNavigate('contact')} className="text-blue-600 underline">Contact page</button> or
-            email us at <a href="mailto:contact@jpgtopdfconverter.com" className="text-blue-600 underline">contact@jpgtopdfconverter.com</a>.
+            email us at <a href="mailto:contact@convertjpgtopdf.online" className="text-blue-600 underline">contact@convertjpgtopdf.online</a>.
           </p>
         </div>
 
