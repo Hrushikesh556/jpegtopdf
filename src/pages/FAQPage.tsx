@@ -134,7 +134,7 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
       <SEOHead
         title="FAQ - JPG to PDF Converter | Frequently Asked Questions"
         description="Find answers to frequently asked questions about converting JPG to PDF online. Learn about file formats, privacy, mobile support, page sizes, and more."
-        canonical="https://jpgtopdfconverter.com/faq"
+        canonical="https://convertjpgtopdf.online/faq"
         keywords="jpg to pdf faq, how to convert jpg to pdf, jpg to pdf help, image to pdf questions, pdf converter faq"
       />
       <Breadcrumbs
