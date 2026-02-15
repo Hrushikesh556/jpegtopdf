@@ -12,7 +12,7 @@ export function JpegToPdfPage({ onNavigate }: JpegToPdfPageProps) {
       <SEOHead
         title="JPEG to PDF Converter - Convert JPEG to PDF Online Free | No Signup"
         description="Convert JPEG to PDF online for free. Upload multiple JPEG photos, reorder pages, customize settings, and download your PDF instantly. 100% private, no signup needed."
-        canonical="https://jpgtopdfconverter.com/jpeg-to-pdf"
+        canonical="https://convertjpgtopdf.online/jpeg-to-pdf"
         keywords="jpeg to pdf, convert jpeg to pdf, jpeg to pdf converter, jpeg to pdf online, jpeg to pdf free, jpeg image to pdf, jpeg photo to pdf"
       />
       <Breadcrumbs

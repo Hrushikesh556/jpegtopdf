@@ -41,7 +41,7 @@ export function SitemapPage({ onNavigate }: SitemapPageProps) {
       <SEOHead
         title="Sitemap - JPG to PDF Converter | All Pages"
         description="Complete sitemap of JPG to PDF Converter website. Find all tools, guides, tutorials, and pages in one place."
-        canonical="https://jpgtopdfconverter.com/sitemap"
+        canonical="https://convertjpgtopdf.online/sitemap"
         keywords="sitemap, jpg to pdf pages, site map, all pages"
       />
       <Breadcrumbs

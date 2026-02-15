@@ -1,23 +1,19 @@
-# robots.txt for JPG to PDF Converter
-# https://convertjpgtopdf.online/
+# robots.txt for https://convertjpgtopdf.online
 
 User-agent: *
-Allow: /
-Disallow: /api/
-
-# Allow Google AdSense crawlers
-User-agent: Mediapartners-Google
-Allow: /
-
-User-agent: AdsBot-Google
-Allow: /
-
-User-agent: AdsBot-Google-Mobile
 Allow: /
 
 # Sitemap location
 Sitemap: https://convertjpgtopdf.online/sitemap.xml
 
-# Crawl-delay for polite bots
-User-agent: *
+# Google AdSense
+User-agent: Mediapartners-Google
+Allow: /
+
+# Block common bot paths (if any exist in future)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl delay for politeness
 Crawl-delay: 1

@@ -12,7 +12,7 @@ export function HowToGuidePage({ onNavigate }: HowToGuidePageProps) {
       <SEOHead
         title="How to Convert JPG to PDF - Complete Step-by-Step Guide (2024)"
         description="Learn how to convert JPG to PDF online for free. Complete guide with step-by-step instructions, tips for best quality, mobile instructions, and troubleshooting."
-        canonical="https://jpgtopdfconverter.com/how-to-convert-jpg-to-pdf"
+        canonical="https://convertjpgtopdf.online/how-to-convert-jpg-to-pdf"
         keywords="how to convert jpg to pdf, jpg to pdf tutorial, image to pdf guide, convert pictures to pdf, how to make pdf from images, step by step jpg to pdf"
       />
       <Breadcrumbs

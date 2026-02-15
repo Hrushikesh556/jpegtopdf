@@ -12,7 +12,7 @@ export function ImageToPdfPage({ onNavigate }: ImageToPdfPageProps) {
       <SEOHead
         title="Image to PDF Converter - Convert Images to PDF Online Free | No Signup"
         description="Convert images to PDF online for free. Upload JPG, JPEG, PNG images and convert them to PDF instantly. No signup, no server uploads, 100% private."
-        canonical="https://jpgtopdfconverter.com/image-to-pdf"
+        canonical="https://convertjpgtopdf.online/image-to-pdf"
         keywords="image to pdf, convert image to pdf, image to pdf converter, photo to pdf, picture to pdf, image to pdf online free, convert photo to pdf"
       />
       <Breadcrumbs

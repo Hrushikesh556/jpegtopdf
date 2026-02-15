@@ -63,7 +63,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
       <SEOHead
         title="Blog - JPG to PDF Tips, Guides & Tutorials | JPG to PDF Converter"
         description="Learn everything about converting images to PDF. Tips, tutorials, guides for JPG to PDF conversion, document scanning, PDF settings, and more."
-        canonical="https://convertjpgtopdf.online/"
+        canonical="https://convertjpgtopdf.online/blog"
         keywords="jpg to pdf blog, pdf conversion tips, image to pdf guide, pdf tutorials, document conversion tips"
       />
       <Breadcrumbs
