@@ -50,15 +50,24 @@ const PAGE_TO_PATH: Record<string, string> = {
   'sitemap': '/sitemap',
 };
 
-function getPageFromPath(path: string): string {
-  // Remove trailing slash
-  const cleanPath = path === '/' ? '/' : path.replace(/\/$/, '');
+function getPageFromPath(pathname: string, hash: string): string {
+  // First check hash-based routing (fallback for 404 redirects)
+  if (hash && hash.startsWith('#/')) {
+    const hashPath = hash.slice(1); // Remove the #
+    const cleanHashPath = hashPath === '/' ? '/' : hashPath.replace(/\/$/, '');
+    if (PATH_TO_PAGE[cleanHashPath]) {
+      return PATH_TO_PAGE[cleanHashPath];
+    }
+  }
+  
+  // Then check pathname-based routing
+  const cleanPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
   return PATH_TO_PAGE[cleanPath] || '404';
 }
 
 export function App() {
   const [currentPage, setCurrentPage] = useState(() => {
-    return getPageFromPath(window.location.pathname);
+    return getPageFromPath(window.location.pathname, window.location.hash);
   });
 
   const handleNavigate = useCallback((page: string) => {
@@ -66,6 +75,23 @@ export function App() {
     const path = PAGE_TO_PATH[page] || '/';
     window.history.pushState({ page }, '', path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Update document title immediately for better UX
+    const titles: Record<string, string> = {
+      'home': 'JPG to PDF Converter - Free Online',
+      'png-to-pdf': 'PNG to PDF Converter - Free Online',
+      'jpeg-to-pdf': 'JPEG to PDF Converter - Free Online',
+      'image-to-pdf': 'Image to PDF Converter - Free Online',
+      'privacy': 'Privacy Policy - JPG to PDF Converter',
+      'about': 'About Us - JPG to PDF Converter',
+      'terms': 'Terms of Service - JPG to PDF Converter',
+      'contact': 'Contact Us - JPG to PDF Converter',
+      'faq': 'FAQ - JPG to PDF Converter',
+      'how-to-guide': 'How to Convert JPG to PDF - Guide',
+      'blog': 'Blog & Guides - JPG to PDF Converter',
+      'sitemap': 'Sitemap - JPG to PDF Converter',
+    };
+    document.title = titles[page] || 'JPG to PDF Converter';
   }, []);
 
   // Handle browser back/forward buttons
@@ -74,12 +100,26 @@ export function App() {
       if (event.state?.page) {
         setCurrentPage(event.state.page);
       } else {
-        setCurrentPage(getPageFromPath(window.location.pathname));
+        setCurrentPage(getPageFromPath(window.location.pathname, window.location.hash));
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     window.addEventListener('popstate', handler);
     return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  // Handle hash-based navigation (from 404 redirects)
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#/')) {
+      const hashPath = hash.slice(1);
+      const page = PATH_TO_PAGE[hashPath];
+      if (page) {
+        // Clean up the URL by replacing hash with proper path
+        window.history.replaceState({ page }, '', hashPath);
+        setCurrentPage(page);
+      }
+    }
   }, []);
 
   // Handle custom navigate events (from other components)

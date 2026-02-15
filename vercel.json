@@ -2,15 +2,17 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "trailingSlash": false,
   "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/ads.txt", "destination": "/ads.txt" },
+    { "source": "/manifest.json", "destination": "/manifest.json" },
+    { "source": "/404.html", "destination": "/404.html" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ],
   "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.convertjpgtopdf.online" }],
-      "destination": "https://convertjpgtopdf.online/:path*",
-      "permanent": true
-    },
     {
       "source": "/index.html",
       "destination": "/",
@@ -30,58 +32,9 @@
       "source": "/home",
       "destination": "/",
       "permanent": true
-    },
-    {
-      "source": "/jpg-to-pdf.html",
-      "destination": "/jpg-to-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/png-to-pdf.html",
-      "destination": "/png-to-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/jpeg-to-pdf.html",
-      "destination": "/jpeg-to-pdf",
-      "permanent": true
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy-policy",
-      "permanent": true
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms-of-service",
-      "permanent": true
-    },
-    {
-      "source": "/tos",
-      "destination": "/terms-of-service",
-      "permanent": true
     }
   ],
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/ads.txt", "destination": "/ads.txt" },
-    { "source": "/manifest.json", "destination": "/manifest.json" },
-    { "source": "/favicon.ico", "destination": "/favicon.ico" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
   "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
-      ]
-    },
     {
       "source": "/assets/(.*)",
       "headers": [
@@ -89,37 +42,12 @@
       ]
     },
     {
-      "source": "/index.html",
+      "source": "/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
-      ]
-    },
-    {
-      "source": "/ads.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
-      ]
-    },
-    {
-      "source": "/manifest.json",
-      "headers": [
-        { "key": "Content-Type", "value": "application/manifest+json" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
   ]
