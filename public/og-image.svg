@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="50%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="200" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="1100" cy="530" r="250" fill="rgba(255,255,255,0.05)"/>
+  
+  <!-- Icon - Image to PDF -->
+  <g transform="translate(150, 200)">
+    <!-- Source Image Icon -->
+    <rect x="0" y="0" width="150" height="120" rx="10" fill="white"/>
+    <rect x="15" y="15" width="120" height="75" rx="5" fill="#e0e7ff"/>
+    <circle cx="45" cy="40" r="15" fill="#fbbf24"/>
+    <path d="M15 75 L55 45 L85 65 L120 35 L135 50 L135 80 L15 80 Z" fill="#22c55e"/>
+    <text x="75" y="108" font-family="Arial, sans-serif" font-size="14" fill="#6b7280" text-anchor="middle">JPG</text>
+    
+    <!-- Arrow -->
+    <g transform="translate(180, 40)">
+      <path d="M0 20 L60 20 M45 5 L65 20 L45 35" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+    
+    <!-- PDF Icon -->
+    <g transform="translate(280, 0)">
+      <rect x="0" y="0" width="150" height="120" rx="10" fill="white"/>
+      <path d="M25 15 L25 105 L95 105 L95 45 L65 15 Z" fill="#ef4444"/>
+      <path d="M65 15 L65 45 L95 45" fill="none" stroke="#dc2626" stroke-width="2"/>
+      <text x="60" y="80" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">PDF</text>
+      <text x="115" y="108" font-family="Arial, sans-serif" font-size="14" fill="#6b7280" text-anchor="middle">PDF</text>
+    </g>
+  </g>
+  
+  <!-- Main Title -->
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">JPG to PDF Converter</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.9)" text-anchor="middle">Free Online Tool - No Signup Required</text>
+  
+  <!-- Features -->
+  <g transform="translate(200, 420)">
+    <g transform="translate(0, 0)">
+      <circle cx="15" cy="15" r="15" fill="rgba(255,255,255,0.2)"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">✓</text>
+      <text x="45" y="22" font-family="Arial, sans-serif" font-size="20" fill="white">No Watermarks</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <circle cx="15" cy="15" r="15" fill="rgba(255,255,255,0.2)"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">✓</text>
+      <text x="45" y="22" font-family="Arial, sans-serif" font-size="20" fill="white">100% Free</text>
+    </g>
+    <g transform="translate(450, 0)">
+      <circle cx="15" cy="15" r="15" fill="rgba(255,255,255,0.2)"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">✓</text>
+      <text x="45" y="22" font-family="Arial, sans-serif" font-size="20" fill="white">Secure & Private</text>
+    </g>
+    <g transform="translate(700, 0)">
+      <circle cx="15" cy="15" r="15" fill="rgba(255,255,255,0.2)"/>
+      <text x="15" y="20" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">✓</text>
+      <text x="45" y="22" font-family="Arial, sans-serif" font-size="20" fill="white">Mobile Friendly</text>
+    </g>
+  </g>
+  
+  <!-- URL -->
+  <text x="600" y="560" font-family="Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.8)" text-anchor="middle">convertjpgtopdf.online</text>
+  
+  <!-- Rating Stars -->
+  <g transform="translate(500, 480)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" fill="#fbbf24">★★★★★</text>
+    <text x="140" y="0" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">4.9/5 (18,000+ users)</text>
+  </g>
+</svg>
