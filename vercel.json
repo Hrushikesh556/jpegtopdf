@@ -8,29 +8,7 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=86400" }
-      ]
-    },
-    {
-      "source": "/manifest.json",
-      "headers": [
-        { "key": "Content-Type", "value": "application/manifest+json; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
@@ -41,43 +19,32 @@
     }
   ],
   "rewrites": [
-    { "source": "/jpg-to-pdf", "destination": "/index.html" },
-    { "source": "/png-to-pdf", "destination": "/index.html" },
-    { "source": "/jpeg-to-pdf", "destination": "/index.html" },
-    { "source": "/image-to-pdf", "destination": "/index.html" },
-    { "source": "/blog", "destination": "/index.html" },
-    { "source": "/faq", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/index.html" },
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/privacy-policy", "destination": "/index.html" },
-    { "source": "/terms-of-service", "destination": "/index.html" },
-    { "source": "/how-to-convert-jpg-to-pdf", "destination": "/index.html" },
-    { "source": "/sitemap", "destination": "/index.html" },
-    { "source": "/((?!assets|favicon|manifest|sitemap|robots|ads|og-).*)", "destination": "/index.html" }
+    { "source": "/jpg-to-pdf", "destination": "/jpg-to-pdf.html" },
+    { "source": "/png-to-pdf", "destination": "/png-to-pdf.html" },
+    { "source": "/jpeg-to-pdf", "destination": "/jpeg-to-pdf.html" },
+    { "source": "/image-to-pdf", "destination": "/image-to-pdf.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
+    { "source": "/how-to-convert-jpg-to-pdf", "destination": "/how-to-convert-jpg-to-pdf.html" },
+    { "source": "/sitemap", "destination": "/sitemap-page.html" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/index.php", "destination": "/", "permanent": true },
-    { "source": "/index.htm", "destination": "/", "permanent": true },
     { "source": "/home", "destination": "/", "permanent": true },
-    { "source": "/convert", "destination": "/", "permanent": true },
-    { "source": "/converter", "destination": "/", "permanent": true },
-    { "source": "/jpg-pdf", "destination": "/jpg-to-pdf", "permanent": true },
     { "source": "/jpgtopdf", "destination": "/jpg-to-pdf", "permanent": true },
     { "source": "/jpg2pdf", "destination": "/jpg-to-pdf", "permanent": true },
-    { "source": "/png-pdf", "destination": "/png-to-pdf", "permanent": true },
     { "source": "/pngtopdf", "destination": "/png-to-pdf", "permanent": true },
     { "source": "/png2pdf", "destination": "/png-to-pdf", "permanent": true },
-    { "source": "/jpeg-pdf", "destination": "/jpeg-to-pdf", "permanent": true },
     { "source": "/jpegtopdf", "destination": "/jpeg-to-pdf", "permanent": true },
-    { "source": "/jpeg2pdf", "destination": "/jpeg-to-pdf", "permanent": true },
-    { "source": "/image-pdf", "destination": "/image-to-pdf", "permanent": true },
     { "source": "/imagetopdf", "destination": "/image-to-pdf", "permanent": true },
-    { "source": "/image2pdf", "destination": "/image-to-pdf", "permanent": true },
     { "source": "/faqs", "destination": "/faq", "permanent": true },
     { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
     { "source": "/terms", "destination": "/terms-of-service", "permanent": true },
-    { "source": "/tos", "destination": "/terms-of-service", "permanent": true },
     { "source": "/how-to", "destination": "/how-to-convert-jpg-to-pdf", "permanent": true },
     { "source": "/guide", "destination": "/how-to-convert-jpg-to-pdf", "permanent": true }
   ]
