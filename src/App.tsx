@@ -7,130 +7,208 @@ import { SortableImageGrid } from './components/SortableImageGrid';
 import { generatePdf, downloadPdf, cleanupPdfUrl, type PdfResult } from './utils/pdfGenerator';
 import type { ImageFile, PdfSettings } from './types';
 
-// SEO data for each page
+// SEO data for each page - Unique metadata for every page
 interface PageSEO {
   title: string;
   description: string;
   canonical: string;
   h1: string;
+  keywords: string;
+  ogImage: string;
 }
 
 const pageSEOData: Record<string, PageSEO> = {
   home: {
-    title: 'JPG to PDF Converter - Free Online Tool | Convert Images to PDF Instantly',
-    description: 'Convert JPG to PDF online for FREE. No signup required, no watermarks, 100% secure. Upload multiple images, reorder pages, and download your PDF instantly.',
+    title: 'Convert JPG to PDF Online Free - Fast, Secure, No Signup | ConvertJPGtoPDF',
+    description: 'Convert JPG to PDF online FREE in seconds! No signup, no watermarks, no file limits. 100% secure client-side processing - your images never leave your device. Works on mobile & desktop.',
     canonical: 'https://convertjpgtopdf.online/',
-    h1: 'JPG to PDF Converter - Free Online'
+    h1: 'Convert JPG to PDF Online - Free, Fast & Secure',
+    keywords: 'jpg to pdf, convert jpg to pdf, jpg to pdf converter free, image to pdf, jpg to pdf online, free jpg to pdf converter',
+    ogImage: 'https://convertjpgtopdf.online/og-home.png'
   },
   'jpg-to-pdf': {
-    title: 'JPG to PDF Converter - Convert JPG Images to PDF Free Online',
-    description: 'Convert JPG files to PDF instantly. Free online JPG to PDF converter with no signup, no watermarks. Drag, drop, convert, and download.',
+    title: 'JPG to PDF Converter - Free Online Tool, No Registration | 2024',
+    description: 'Best free JPG to PDF converter online. Transform JPG images to PDF documents instantly. No signup, no watermarks, unlimited conversions. 100% private & secure.',
     canonical: 'https://convertjpgtopdf.online/jpg-to-pdf',
-    h1: 'Convert JPG to PDF Online Free'
+    h1: 'JPG to PDF Converter - Free & Unlimited',
+    keywords: 'jpg to pdf converter, convert jpg to pdf free, jpg to pdf online free, jpg image to pdf, free jpg to pdf',
+    ogImage: 'https://convertjpgtopdf.online/og-jpg-to-pdf.png'
   },
   'png-to-pdf': {
-    title: 'PNG to PDF Converter - Convert PNG Images to PDF Free Online',
-    description: 'Convert PNG files to PDF instantly. Free online PNG to PDF converter. Upload multiple PNG images, combine into one PDF. No signup required.',
+    title: 'PNG to PDF Converter Free Online - Preserve Quality & Transparency',
+    description: 'Convert PNG to PDF online free while preserving transparency and quality. Combine multiple PNG files into one PDF. No signup, instant download, works on all devices.',
     canonical: 'https://convertjpgtopdf.online/png-to-pdf',
-    h1: 'Convert PNG to PDF Online Free'
+    h1: 'PNG to PDF Converter - Free & High Quality',
+    keywords: 'png to pdf, convert png to pdf, png to pdf converter, png to pdf free, combine png to pdf',
+    ogImage: 'https://convertjpgtopdf.online/og-png-to-pdf.png'
   },
   'jpeg-to-pdf': {
-    title: 'JPEG to PDF Converter - Convert JPEG Images to PDF Free',
-    description: 'Convert JPEG files to PDF online for free. No signup, no watermarks. Upload JPEG images, arrange pages, download PDF instantly.',
+    title: 'JPEG to PDF Converter - Convert Without Losing Quality | Free Online',
+    description: 'Convert JPEG to PDF without losing image quality. Free online JPEG to PDF converter with no registration. Perfect for photos, scans, and professional documents.',
     canonical: 'https://convertjpgtopdf.online/jpeg-to-pdf',
-    h1: 'Convert JPEG to PDF Online Free'
+    h1: 'JPEG to PDF - Convert Without Losing Quality',
+    keywords: 'jpeg to pdf, convert jpeg to pdf, jpeg to pdf converter, jpeg to pdf free, jpeg to pdf no quality loss',
+    ogImage: 'https://convertjpgtopdf.online/og-jpeg-to-pdf.png'
   },
   'image-to-pdf': {
-    title: 'Image to PDF Converter - Convert Any Image to PDF Free Online',
-    description: 'Convert images to PDF online. Support for JPG, JPEG, PNG. Free image to PDF converter with no signup. Combine multiple images into one PDF.',
+    title: 'Image to PDF Converter - Convert Any Image Format to PDF Free',
+    description: 'Convert any image to PDF online free. Support for JPG, PNG, JPEG formats. Combine multiple images into one PDF document. No signup, no limits, instant conversion.',
     canonical: 'https://convertjpgtopdf.online/image-to-pdf',
-    h1: 'Convert Images to PDF Online Free'
+    h1: 'Image to PDF Converter - All Formats Supported',
+    keywords: 'image to pdf, convert image to pdf, photo to pdf, picture to pdf, image to pdf converter free',
+    ogImage: 'https://convertjpgtopdf.online/og-image-to-pdf.png'
+  },
+  'jpg-to-pdf-100kb': {
+    title: 'Convert JPG to PDF Under 100KB - Compress PDF for Upload | Free',
+    description: 'Create compressed PDFs under 100KB from JPG images. Perfect for government form uploads, bank KYC documents, and email attachments with size restrictions. Free tool, no signup.',
+    canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-100kb',
+    h1: 'Convert JPG to PDF Under 100KB',
+    keywords: 'jpg to pdf 100kb, compress jpg to pdf, small pdf from jpg, pdf under 100kb, compress pdf for upload',
+    ogImage: 'https://convertjpgtopdf.online/og-100kb.png'
+  },
+  'jpg-to-pdf-high-quality': {
+    title: 'Convert JPG to PDF Without Losing Quality - Lossless Conversion Free',
+    description: 'Convert JPG to PDF without any quality loss. Preserve original image resolution and clarity. No compression artifacts, no degradation. Free lossless JPG to PDF converter.',
+    canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-high-quality',
+    h1: 'Convert JPG to PDF Without Losing Quality',
+    keywords: 'jpg to pdf without losing quality, lossless jpg to pdf, high quality pdf from jpg, jpg to pdf no compression',
+    ogImage: 'https://convertjpgtopdf.online/og-high-quality.png'
+  },
+  'batch-jpg-to-pdf': {
+    title: 'Batch Convert JPG to PDF - Multiple Images to One PDF Free | No Limit',
+    description: 'Batch convert multiple JPG images to PDF at once. No file limit, no daily caps. Combine 50+ images into a single PDF document. Free batch conversion tool, no signup required.',
+    canonical: 'https://convertjpgtopdf.online/batch-jpg-to-pdf',
+    h1: 'Batch Convert JPG to PDF - Free, No Limits',
+    keywords: 'batch jpg to pdf, multiple jpg to pdf, bulk jpg to pdf, combine multiple jpg to pdf, batch convert images',
+    ogImage: 'https://convertjpgtopdf.online/og-batch.png'
+  },
+  'jpg-to-pdf-for-bank': {
+    title: 'Convert JPG to PDF for Bank Upload - KYC & Government Documents',
+    description: 'Create PDFs from JPG images perfect for bank uploads, KYC verification, loan applications, and government form submissions. Correct format and size for official document requirements.',
+    canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-for-bank',
+    h1: 'Convert JPG to PDF for Bank & Government Forms',
+    keywords: 'jpg to pdf for bank, pdf for kyc, jpg to pdf government forms, pdf for loan application, document upload pdf',
+    ogImage: 'https://convertjpgtopdf.online/og-bank.png'
   },
   blog: {
-    title: 'Blog & Guides - JPG to PDF Converter Tips | ConvertJPGtoPDF.online',
-    description: 'Learn PDF conversion tips, image optimization guides, and best practices. Expert tutorials on converting JPG, PNG to PDF.',
+    title: 'JPG to PDF Blog - Tips, Guides & Best Practices | ConvertJPGtoPDF',
+    description: 'Expert tips and tutorials for PDF conversion. Learn best practices for converting images to PDF, optimizing file sizes, and choosing the right settings. Updated guides for 2024.',
     canonical: 'https://convertjpgtopdf.online/blog',
-    h1: 'Blog & Guides'
+    h1: 'Blog & Guides',
+    keywords: 'jpg to pdf tips, pdf conversion guide, image to pdf tutorial, pdf best practices, how to convert images',
+    ogImage: 'https://convertjpgtopdf.online/og-blog.png'
   },
   faq: {
-    title: 'FAQ - Frequently Asked Questions | JPG to PDF Converter',
-    description: 'Find answers to common questions about converting JPG to PDF. Learn about our free converter, privacy, supported formats, and more.',
+    title: 'FAQ - JPG to PDF Converter Questions Answered | ConvertJPGtoPDF',
+    description: 'Get answers to frequently asked questions about our free JPG to PDF converter. Learn about privacy, supported formats, mobile compatibility, file limits, and troubleshooting.',
     canonical: 'https://convertjpgtopdf.online/faq',
-    h1: 'Frequently Asked Questions'
+    h1: 'Frequently Asked Questions',
+    keywords: 'jpg to pdf faq, pdf converter questions, how does jpg to pdf work, is jpg to pdf safe, pdf converter help',
+    ogImage: 'https://convertjpgtopdf.online/og-faq.png'
   },
   contact: {
-    title: 'Contact Us | JPG to PDF Converter Support',
-    description: 'Get in touch with the JPG to PDF Converter team. Questions, feedback, or support - we are here to help.',
+    title: 'Contact Us - JPG to PDF Converter Support | ConvertJPGtoPDF',
+    description: 'Get in touch with the ConvertJPGtoPDF.online team. Questions, feedback, bug reports, or business inquiries - we typically respond within 24-48 hours.',
     canonical: 'https://convertjpgtopdf.online/contact',
-    h1: 'Contact Us'
+    h1: 'Contact Us',
+    keywords: 'contact jpg to pdf, pdf converter support, jpg to pdf help, report bug, feedback',
+    ogImage: 'https://convertjpgtopdf.online/og-contact.png'
   },
   about: {
-    title: 'About Us | Free JPG to PDF Converter - Our Mission',
-    description: 'Learn about ConvertJPGtoPDF.online - our mission to provide free, private, and fast image to PDF conversion for everyone.',
+    title: 'About ConvertJPGtoPDF.online - Our Mission & Story | Free PDF Tool',
+    description: 'Learn about ConvertJPGtoPDF.online - our mission to provide the fastest, most secure, and completely free image to PDF converter. Privacy-first design, no signup required.',
     canonical: 'https://convertjpgtopdf.online/about',
-    h1: 'About JPG to PDF Converter'
+    h1: 'About JPG to PDF Converter',
+    keywords: 'about convertjpgtopdf, who made jpg to pdf converter, free pdf tool mission, privacy first pdf converter',
+    ogImage: 'https://convertjpgtopdf.online/og-about.png'
   },
   privacy: {
-    title: 'Privacy Policy | JPG to PDF Converter - Your Privacy Matters',
-    description: 'Read our privacy policy. Your files never leave your device. We prioritize your privacy with 100% client-side processing.',
+    title: 'Privacy Policy - Your Files Never Leave Your Device | ConvertJPGtoPDF',
+    description: 'Read our privacy policy. ConvertJPGtoPDF.online uses 100% client-side processing - your images and PDFs are NEVER uploaded to our servers. Complete privacy guaranteed.',
     canonical: 'https://convertjpgtopdf.online/privacy-policy',
-    h1: 'Privacy Policy'
+    h1: 'Privacy Policy',
+    keywords: 'jpg to pdf privacy, pdf converter privacy policy, is jpg to pdf private, client side processing, no upload',
+    ogImage: 'https://convertjpgtopdf.online/og-privacy.png'
   },
   terms: {
-    title: 'Terms of Service | JPG to PDF Converter',
-    description: 'Terms of Service for ConvertJPGtoPDF.online. Read about acceptable use, disclaimers, and your rights.',
+    title: 'Terms of Service - ConvertJPGtoPDF.online | Legal Information',
+    description: 'Terms of Service for ConvertJPGtoPDF.online. Understand your rights, acceptable use, disclaimers, and our liability limitations when using our free PDF converter.',
     canonical: 'https://convertjpgtopdf.online/terms-of-service',
-    h1: 'Terms of Service'
+    h1: 'Terms of Service',
+    keywords: 'jpg to pdf terms, pdf converter terms of service, convertjpgtopdf legal, user agreement',
+    ogImage: 'https://convertjpgtopdf.online/og-terms.png'
   },
   howto: {
-    title: 'How to Convert JPG to PDF - Complete Step-by-Step Guide',
-    description: 'Learn how to convert JPG images to PDF with our complete guide. Step-by-step instructions, tips, and best practices for perfect PDF conversion.',
+    title: 'How to Convert JPG to PDF - Complete Step-by-Step Tutorial | 2024',
+    description: 'Learn how to convert JPG images to PDF with our detailed step-by-step guide. Includes instructions for iPhone, Android, Windows, and Mac. Tips for best quality and troubleshooting.',
     canonical: 'https://convertjpgtopdf.online/how-to-convert-jpg-to-pdf',
-    h1: 'How to Convert JPG to PDF - Complete Guide'
+    h1: 'How to Convert JPG to PDF - Complete Guide',
+    keywords: 'how to convert jpg to pdf, jpg to pdf tutorial, jpg to pdf step by step, convert image to pdf guide',
+    ogImage: 'https://convertjpgtopdf.online/og-howto.png'
   },
   sitemap: {
-    title: 'Sitemap | JPG to PDF Converter - All Pages',
-    description: 'Browse all pages on ConvertJPGtoPDF.online. Find tools, guides, and resources for converting images to PDF.',
+    title: 'Sitemap - All Pages & Tools | ConvertJPGtoPDF.online',
+    description: 'Browse all pages on ConvertJPGtoPDF.online. Find our free PDF conversion tools, guides, FAQ, and resources. Complete site navigation and page directory.',
     canonical: 'https://convertjpgtopdf.online/sitemap',
-    h1: 'Sitemap'
+    h1: 'Sitemap',
+    keywords: 'convertjpgtopdf sitemap, all pages, site navigation, pdf tools list',
+    ogImage: 'https://convertjpgtopdf.online/og-sitemap.png'
   }
 };
 
-// Update page meta tags dynamically
+// Update page meta tags dynamically - comprehensive SEO update
 const updatePageSEO = (pageKey: string) => {
   const seo = pageSEOData[pageKey] || pageSEOData.home;
   
   // Update title
   document.title = seo.title;
   
+  // Helper function to update or create meta tag
+  const updateMeta = (selector: string, attr: string, value: string) => {
+    let element = document.querySelector(selector);
+    if (element) {
+      element.setAttribute(attr, value);
+    } else {
+      // Create the meta tag if it doesn't exist
+      const meta = document.createElement('meta');
+      if (selector.includes('property=')) {
+        meta.setAttribute('property', selector.match(/property="([^"]+)"/)?.[1] || '');
+      } else if (selector.includes('name=')) {
+        meta.setAttribute('name', selector.match(/name="([^"]+)"/)?.[1] || '');
+      }
+      meta.setAttribute(attr, value);
+      document.head.appendChild(meta);
+    }
+  };
+  
   // Update meta description
-  let metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) {
-    metaDesc.setAttribute('content', seo.description);
-  }
+  updateMeta('meta[name="description"]', 'content', seo.description);
+  
+  // Update meta keywords
+  updateMeta('meta[name="keywords"]', 'content', seo.keywords);
   
   // Update canonical
   let canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) {
     canonical.setAttribute('href', seo.canonical);
+  } else {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    link.setAttribute('href', seo.canonical);
+    document.head.appendChild(link);
   }
   
   // Update OG tags
-  let ogTitle = document.querySelector('meta[property="og:title"]');
-  if (ogTitle) ogTitle.setAttribute('content', seo.title);
-  
-  let ogDesc = document.querySelector('meta[property="og:description"]');
-  if (ogDesc) ogDesc.setAttribute('content', seo.description);
-  
-  let ogUrl = document.querySelector('meta[property="og:url"]');
-  if (ogUrl) ogUrl.setAttribute('content', seo.canonical);
+  updateMeta('meta[property="og:title"]', 'content', seo.title);
+  updateMeta('meta[property="og:description"]', 'content', seo.description);
+  updateMeta('meta[property="og:url"]', 'content', seo.canonical);
+  updateMeta('meta[property="og:image"]', 'content', seo.ogImage);
   
   // Update Twitter tags
-  let twTitle = document.querySelector('meta[name="twitter:title"]');
-  if (twTitle) twTitle.setAttribute('content', seo.title);
-  
-  let twDesc = document.querySelector('meta[name="twitter:description"]');
-  if (twDesc) twDesc.setAttribute('content', seo.description);
+  updateMeta('meta[name="twitter:title"]', 'content', seo.title);
+  updateMeta('meta[name="twitter:description"]', 'content', seo.description);
+  updateMeta('meta[name="twitter:url"]', 'content', seo.canonical);
+  updateMeta('meta[name="twitter:image"]', 'content', seo.ogImage);
 };
 
 // Page mapping for URL routing
@@ -149,6 +227,11 @@ const getPageFromPath = (path: string): string => {
     '/terms-of-service': 'terms',
     '/how-to-convert-jpg-to-pdf': 'howto',
     '/sitemap': 'sitemap',
+    // Long-tail keyword pages
+    '/jpg-to-pdf-100kb': 'jpg-to-pdf-100kb',
+    '/jpg-to-pdf-high-quality': 'jpg-to-pdf-high-quality',
+    '/batch-jpg-to-pdf': 'batch-jpg-to-pdf',
+    '/jpg-to-pdf-for-bank': 'jpg-to-pdf-for-bank',
   };
   return routes[path] || 'home';
 };
@@ -283,26 +366,51 @@ export function App() {
 
   // Get dynamic content based on current page
   const getConverterContent = () => {
-    const content: Record<string, { h1: string; subtitle: string }> = {
+    const content: Record<string, { h1: string; subtitle: string; keywords?: string[] }> = {
       'home': {
-        h1: 'JPG to PDF Converter - Free Online',
-        subtitle: 'Convert your JPG, JPEG, and PNG images to PDF instantly. No signup required. 100% free and private.'
+        h1: 'Convert JPG to PDF Online - Free, Fast & Secure',
+        subtitle: 'Convert your JPG, JPEG, and PNG images to PDF instantly. No signup required, no watermarks, no limits. 100% private - files never leave your device.',
+        keywords: ['free', 'fast', 'secure', 'no signup', 'no watermarks']
       },
       'jpg-to-pdf': {
-        h1: 'Convert JPG to PDF Online Free',
-        subtitle: 'Transform your JPG images into professional PDF documents. Fast, free, and secure conversion.'
+        h1: 'JPG to PDF Converter - Free & Unlimited',
+        subtitle: 'Transform your JPG images into professional PDF documents in seconds. No file size limits, no daily conversion caps.',
+        keywords: ['unlimited', 'professional', 'instant']
       },
       'png-to-pdf': {
-        h1: 'Convert PNG to PDF Online Free',
-        subtitle: 'Convert PNG images to PDF format instantly. Perfect for screenshots, graphics, and transparent images.'
+        h1: 'PNG to PDF Converter - Free & High Quality',
+        subtitle: 'Convert PNG images to PDF while preserving quality. Perfect for screenshots, graphics, and transparent images.',
+        keywords: ['high quality', 'transparency', 'screenshots']
       },
       'jpeg-to-pdf': {
-        h1: 'Convert JPEG to PDF Online Free',
-        subtitle: 'Turn your JPEG photos into PDF documents. Ideal for documents, scans, and digital photos.'
+        h1: 'JPEG to PDF - Convert Without Losing Quality',
+        subtitle: 'Turn your JPEG photos into PDF documents without quality loss. Ideal for documents, scans, and digital photos.',
+        keywords: ['no quality loss', 'photos', 'scans']
       },
       'image-to-pdf': {
-        h1: 'Convert Images to PDF Online Free',
-        subtitle: 'Convert any image format (JPG, PNG, JPEG) to PDF. Combine multiple images into one document.'
+        h1: 'Image to PDF Converter - All Formats Supported',
+        subtitle: 'Convert any image format (JPG, PNG, JPEG) to PDF. Combine multiple images into one professional document.',
+        keywords: ['all formats', 'combine', 'professional']
+      },
+      'jpg-to-pdf-100kb': {
+        h1: 'Convert JPG to PDF Under 100KB',
+        subtitle: 'Create compressed PDFs under 100KB - perfect for government forms, bank uploads, and email attachments with size restrictions.',
+        keywords: ['100kb', 'compressed', 'government forms', 'bank upload']
+      },
+      'jpg-to-pdf-high-quality': {
+        h1: 'Convert JPG to PDF Without Losing Quality',
+        subtitle: 'Preserve every pixel of your original image. No compression, no quality loss. Perfect for professional documents and prints.',
+        keywords: ['high quality', 'no compression', 'professional']
+      },
+      'batch-jpg-to-pdf': {
+        h1: 'Batch Convert JPG to PDF - Free, No Limits',
+        subtitle: 'Convert 50+ images at once into a single PDF. No file limits, no daily caps, completely free. Perfect for large projects.',
+        keywords: ['batch', 'multiple files', 'no limits', '50+ images']
+      },
+      'jpg-to-pdf-for-bank': {
+        h1: 'Convert JPG to PDF for Bank & Government Forms',
+        subtitle: 'Create PDFs perfectly formatted for KYC verification, loan applications, passport submissions, and official document uploads.',
+        keywords: ['bank upload', 'KYC', 'government forms', 'official documents']
       }
     };
     return content[currentPage] || content.home;
@@ -310,7 +418,8 @@ export function App() {
 
   // Converter Component
   const ConverterSection = () => {
-    const { h1, subtitle } = getConverterContent();
+    const content = getConverterContent();
+    const { h1, subtitle } = content;
     
     return (
     <>
@@ -319,9 +428,39 @@ export function App() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
           {h1}
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
           {subtitle}
         </p>
+        {/* Trust badges */}
+        <div className="flex flex-wrap justify-center gap-4 text-sm">
+          <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full flex items-center gap-1">
+            <span>✓</span> 100% Free
+          </span>
+          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full flex items-center gap-1">
+            <span>✓</span> No Signup
+          </span>
+          <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full flex items-center gap-1">
+            <span>✓</span> No Watermarks
+          </span>
+          <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full flex items-center gap-1">
+            <span>✓</span> Files Stay Private
+          </span>
+        </div>
+      </section>
+      
+      {/* Privacy Trust Banner */}
+      <section className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 mb-8">
+        <div className="flex items-start gap-4">
+          <div className="text-4xl">🔒</div>
+          <div>
+            <h2 className="text-xl font-bold text-green-800 mb-2">Your Privacy is Our Priority</h2>
+            <p className="text-green-700">
+              <strong>100% Client-Side Processing:</strong> Your files are converted directly in your browser using JavaScript. 
+              They are <strong>NEVER uploaded to our servers</strong>. Your images stay on your device, ensuring complete privacy and security. 
+              You can even use this tool offline after the page loads!
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Success Message with Download Button */}
@@ -517,25 +656,155 @@ export function App() {
         </p>
       </section>
 
-      {/* FAQ */}
+      {/* People Also Ask - SEO Section */}
       <section className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">People Also Ask</h2>
         <div className="space-y-4">
           {[
-            { q: 'How do I convert JPG to PDF for free?', a: 'Upload your JPG images using the upload box above, arrange them in your preferred order by dragging, select your settings (page size, orientation, margins), and click "Convert to PDF". Your PDF will download automatically.' },
-            { q: 'Is this converter safe to use?', a: 'Yes! All processing happens directly in your browser using JavaScript. Your files are never uploaded to any server, ensuring complete privacy and security.' },
-            { q: 'Can I convert multiple images at once?', a: 'Absolutely! You can upload up to 50 images at once and combine them into a single PDF document. Simply select multiple files or drag and drop them together.' },
-            { q: 'Do I need to create an account?', a: 'No registration or signup is required. Just visit the page, upload your images, and convert immediately. No email, no password, no account needed.' },
-            { q: 'Does it work on mobile phones?', a: 'Yes, our converter is fully optimized for mobile devices including iPhone, Android phones, and tablets. The touch-friendly interface makes it easy to upload and convert on the go.' },
+            { q: 'How do I convert JPG to PDF for free?', a: 'Upload your JPG images using the upload box above, arrange them in your preferred order by dragging, select your settings (page size, orientation, margins), and click "Convert to PDF". Your PDF will download automatically. It\'s 100% free with no signup required.' },
+            { q: 'Is it safe to convert JPG to PDF online?', a: 'Yes, our converter is completely safe! Unlike other online tools, we use 100% client-side processing. Your files are converted directly in your browser using JavaScript and are NEVER uploaded to any server. Your images stay on your device, ensuring complete privacy.' },
+            { q: 'Can I convert JPG to PDF without losing quality?', a: 'Absolutely! Our converter preserves the original quality of your images. We don\'t compress or alter your images during conversion. For best results, use high-resolution source images and select "Auto" page size to maintain original dimensions.' },
+            { q: 'How do I convert JPG to PDF on iPhone or Android?', a: 'Simply open this website in your mobile browser (Safari, Chrome), tap the upload area, select images from your camera roll or gallery, arrange them by touch-dragging, and tap Convert. The PDF downloads directly to your device. No app installation needed!' },
+            { q: 'Can I combine multiple JPG files into one PDF?', a: 'Yes! You can upload up to 50 images at once and combine them into a single PDF document. Use drag-and-drop to arrange the page order before converting. Perfect for creating multi-page documents from scanned images.' },
+            { q: 'Is there a file size or number limit?', a: 'You can convert up to 50 images per PDF. Since all processing happens in your browser, there\'s no server file size limit. However, very large images (over 10MB each) may take longer to process depending on your device.' },
+            { q: 'How do I convert JPG to PDF for bank document upload?', a: 'Our converter creates standard PDF files perfect for bank and government uploads. For KYC documents, loan applications, or official submissions, upload your JPG images, select A4 or Letter size, and download the professional PDF ready for submission.' },
+            { q: 'Do I need to install any software?', a: 'No installation required! Our converter works entirely in your web browser. Just visit the website, upload your images, and download your PDF. Works on Windows, Mac, Linux, iOS, and Android.' },
           ].map((faq, i) => (
-            <details key={i} className="bg-gray-50 rounded-xl p-4 group">
-              <summary className="font-bold cursor-pointer list-none flex justify-between items-center">
+            <details key={i} className="bg-gray-50 rounded-xl p-4 group" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+              <summary className="font-bold cursor-pointer list-none flex justify-between items-center" itemProp="name">
                 {faq.q}
                 <span className="text-blue-600 group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <p className="mt-3 text-gray-600">{faq.a}</p>
+              <div className="mt-3 text-gray-600" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                <p itemProp="text">{faq.a}</p>
+              </div>
             </details>
           ))}
+        </div>
+      </section>
+
+      {/* Related Tools - Internal Linking */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Conversion Tools</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf'); }} className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all group">
+            <div className="text-3xl mb-3">🖼️</div>
+            <h3 className="font-bold text-gray-900 group-hover:text-blue-600">JPG to PDF</h3>
+            <p className="text-sm text-gray-600 mt-1">Convert JPG images to PDF format</p>
+          </a>
+          <a href="/png-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/png-to-pdf'); }} className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all group">
+            <div className="text-3xl mb-3">📸</div>
+            <h3 className="font-bold text-gray-900 group-hover:text-blue-600">PNG to PDF</h3>
+            <p className="text-sm text-gray-600 mt-1">Convert PNG files with transparency</p>
+          </a>
+          <a href="/batch-jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/batch-jpg-to-pdf'); }} className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all group">
+            <div className="text-3xl mb-3">📚</div>
+            <h3 className="font-bold text-gray-900 group-hover:text-blue-600">Batch Convert</h3>
+            <p className="text-sm text-gray-600 mt-1">Convert multiple files at once</p>
+          </a>
+          <a href="/jpg-to-pdf-100kb" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf-100kb'); }} className="block p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all group">
+            <div className="text-3xl mb-3">📉</div>
+            <h3 className="font-bold text-gray-900 group-hover:text-blue-600">PDF Under 100KB</h3>
+            <p className="text-sm text-gray-600 mt-1">Compressed PDF for uploads</p>
+          </a>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular Use Cases</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl">
+            <div className="text-3xl mb-3">🏦</div>
+            <h3 className="font-bold text-lg mb-2">Bank & KYC Documents</h3>
+            <p className="text-gray-600 text-sm">Convert ID cards, proof of address, and financial documents to PDF for bank account opening, loan applications, and KYC verification.</p>
+            <a href="/jpg-to-pdf-for-bank" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf-for-bank'); }} className="text-blue-600 text-sm font-semibold mt-3 inline-block hover:underline">Learn more →</a>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl">
+            <div className="text-3xl mb-3">🎓</div>
+            <h3 className="font-bold text-lg mb-2">Student Assignments</h3>
+            <p className="text-gray-600 text-sm">Combine homework photos, scanned notes, and assignment pages into a single PDF for easy submission to teachers and online portals.</p>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl">
+            <div className="text-3xl mb-3">📋</div>
+            <h3 className="font-bold text-lg mb-2">Government Forms</h3>
+            <p className="text-gray-600 text-sm">Prepare passport applications, visa documents, and official form submissions with properly formatted PDF attachments.</p>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl">
+            <div className="text-3xl mb-3">💼</div>
+            <h3 className="font-bold text-lg mb-2">Business Documents</h3>
+            <p className="text-gray-600 text-sm">Create professional PDFs from contracts, invoices, receipts, and business cards for easy sharing and archival.</p>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl">
+            <div className="text-3xl mb-3">📷</div>
+            <h3 className="font-bold text-lg mb-2">Photo Albums</h3>
+            <p className="text-gray-600 text-sm">Combine vacation photos, event pictures, or portfolio images into shareable PDF albums for family and clients.</p>
+          </div>
+          <div className="p-6 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl">
+            <div className="text-3xl mb-3">🏥</div>
+            <h3 className="font-bold text-lg mb-2">Medical Records</h3>
+            <p className="text-gray-600 text-sm">Securely convert medical reports, prescriptions, and health documents to PDF. 100% private - files never leave your device.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content */}
+      <section className="prose prose-lg max-w-none mb-12">
+        <h2>Free JPG to PDF Converter Online - No Signup Required</h2>
+        <p>
+          Looking for the fastest, most secure way to <strong>convert JPG to PDF</strong>? Our free online JPG to PDF converter
+          lets you transform images into professional PDF documents instantly — with no signup, no watermarks, and no file limits.
+          Whether you need to convert a single photo or <strong>batch convert multiple JPG files</strong> into one PDF, our tool handles it all.
+        </p>
+        
+        <h3>Why Choose Our JPG to PDF Converter?</h3>
+        <p>
+          Unlike other online converters that upload your files to remote servers, our tool uses <strong>100% client-side processing</strong>.
+          This means your images are converted directly in your web browser — they <strong>never leave your device</strong>. This makes our 
+          converter perfect for sensitive documents like bank statements, ID cards, medical records, and confidential business files.
+        </p>
+        
+        <h3>Convert JPG to PDF Without Losing Quality</h3>
+        <p>
+          Worried about image quality? Don't be. Our converter preserves the original resolution and clarity of your images.
+          We don't apply lossy compression during conversion, so your PDFs look exactly like your source images.
+          For the highest quality output, use high-resolution source images and select "Auto" page size.
+        </p>
+        
+        <h3>Perfect for Mobile Users</h3>
+        <p>
+          Need to <strong>convert JPG to PDF on your iPhone or Android phone</strong>? Our converter is fully mobile-optimized.
+          Simply open this website in your mobile browser, upload photos from your camera roll, arrange them with touch gestures,
+          and download your PDF. No app installation required — everything works right in your browser.
+        </p>
+        
+        <h3>Ideal for Bank and Government Document Uploads</h3>
+        <p>
+          Many banks and government agencies require PDF format for document submissions. Our converter creates 
+          <strong>standard, universally-compatible PDF files</strong> that work with all upload portals. Whether you're submitting
+          KYC documents for bank account verification, passport application attachments, or loan documentation — our PDFs are ready.
+        </p>
+      </section>
+
+      {/* More Resources - Internal Linking */}
+      <section className="mb-12 bg-gray-50 p-8 rounded-2xl">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Helpful Resources</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <a href="/how-to-convert-jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/how-to-convert-jpg-to-pdf'); }} className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span className="text-2xl mb-3 block">📖</span>
+            <h3 className="font-bold text-gray-900 mb-2">Step-by-Step Guide</h3>
+            <p className="text-gray-600 text-sm">Complete tutorial on converting images to PDF with screenshots and tips.</p>
+          </a>
+          <a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }} className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span className="text-2xl mb-3 block">❓</span>
+            <h3 className="font-bold text-gray-900 mb-2">FAQ</h3>
+            <p className="text-gray-600 text-sm">Answers to common questions about JPG to PDF conversion.</p>
+          </a>
+          <a href="/blog" onClick={(e) => { e.preventDefault(); navigate('/blog'); }} className="block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <span className="text-2xl mb-3 block">📝</span>
+            <h3 className="font-bold text-gray-900 mb-2">Blog & Tips</h3>
+            <p className="text-gray-600 text-sm">Expert tips, best practices, and tutorials for PDF conversion.</p>
+          </a>
         </div>
       </section>
     </>
@@ -1983,38 +2252,49 @@ export function App() {
   const SitemapPage = () => (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">Sitemap</h1>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-4 gap-8">
         <div>
-          <h2 className="text-xl font-bold mb-4 text-blue-600">🛠️ Tools</h2>
+          <h2 className="text-xl font-bold mb-4 text-blue-600">🛠️ Core Tools</h2>
           <ul className="space-y-2">
-            <li><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="text-gray-700 hover:text-blue-600">Home</a></li>
-            <li><a href="/jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">JPG to PDF</a></li>
-            <li><a href="/png-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/png-to-pdf'); }} className="text-gray-700 hover:text-blue-600">PNG to PDF</a></li>
-            <li><a href="/image-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/image-to-pdf'); }} className="text-gray-700 hover:text-blue-600">Image to PDF</a></li>
+            <li><a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="text-gray-700 hover:text-blue-600">Home - JPG to PDF</a></li>
+            <li><a href="/jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">JPG to PDF Converter</a></li>
+            <li><a href="/png-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/png-to-pdf'); }} className="text-gray-700 hover:text-blue-600">PNG to PDF Converter</a></li>
+            <li><a href="/jpeg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/jpeg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">JPEG to PDF Converter</a></li>
+            <li><a href="/image-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/image-to-pdf'); }} className="text-gray-700 hover:text-blue-600">Image to PDF Converter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold mb-4 text-blue-600">🎯 Specialized</h2>
+          <ul className="space-y-2">
+            <li><a href="/batch-jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/batch-jpg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">Batch Convert Multiple Images</a></li>
+            <li><a href="/jpg-to-pdf-100kb" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf-100kb'); }} className="text-gray-700 hover:text-blue-600">PDF Under 100KB</a></li>
+            <li><a href="/jpg-to-pdf-high-quality" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf-high-quality'); }} className="text-gray-700 hover:text-blue-600">High Quality (No Loss)</a></li>
+            <li><a href="/jpg-to-pdf-for-bank" onClick={(e) => { e.preventDefault(); navigate('/jpg-to-pdf-for-bank'); }} className="text-gray-700 hover:text-blue-600">For Bank & Government</a></li>
           </ul>
         </div>
         <div>
           <h2 className="text-xl font-bold mb-4 text-blue-600">📚 Resources</h2>
           <ul className="space-y-2">
-            <li><a href="/blog" onClick={(e) => { e.preventDefault(); navigate('/blog'); }} className="text-gray-700 hover:text-blue-600">Blog</a></li>
+            <li><a href="/how-to-convert-jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/how-to-convert-jpg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">Step-by-Step Guide</a></li>
+            <li><a href="/blog" onClick={(e) => { e.preventDefault(); navigate('/blog'); }} className="text-gray-700 hover:text-blue-600">Blog & Tips</a></li>
             <li><a href="/faq" onClick={(e) => { e.preventDefault(); navigate('/faq'); }} className="text-gray-700 hover:text-blue-600">FAQ</a></li>
-            <li><a href="/how-to-convert-jpg-to-pdf" onClick={(e) => { e.preventDefault(); navigate('/how-to-convert-jpg-to-pdf'); }} className="text-gray-700 hover:text-blue-600">How-To Guide</a></li>
           </ul>
         </div>
         <div>
           <h2 className="text-xl font-bold mb-4 text-blue-600">ℹ️ Company</h2>
           <ul className="space-y-2">
-            <li><a href="/about" onClick={(e) => { e.preventDefault(); navigate('/about'); }} className="text-gray-700 hover:text-blue-600">About</a></li>
+            <li><a href="/about" onClick={(e) => { e.preventDefault(); navigate('/about'); }} className="text-gray-700 hover:text-blue-600">About Us</a></li>
             <li><a href="/contact" onClick={(e) => { e.preventDefault(); navigate('/contact'); }} className="text-gray-700 hover:text-blue-600">Contact</a></li>
-            <li><a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="text-gray-700 hover:text-blue-600">Privacy</a></li>
-            <li><a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="text-gray-700 hover:text-blue-600">Terms</a></li>
+            <li><a href="/privacy-policy" onClick={(e) => { e.preventDefault(); navigate('/privacy-policy'); }} className="text-gray-700 hover:text-blue-600">Privacy Policy</a></li>
+            <li><a href="/terms-of-service" onClick={(e) => { e.preventDefault(); navigate('/terms-of-service'); }} className="text-gray-700 hover:text-blue-600">Terms of Service</a></li>
+            <li><a href="/sitemap.xml" className="text-gray-700 hover:text-blue-600">XML Sitemap</a></li>
           </ul>
         </div>
       </div>
     </div>
   );
 
-  // Render current page
+  // Render current page - including long-tail keyword pages
   const renderPage = () => {
     switch (currentPage) {
       case 'blog': return <BlogPage />;
@@ -2025,6 +2305,12 @@ export function App() {
       case 'terms': return <TermsPage />;
       case 'howto': return <HowToPage />;
       case 'sitemap': return <SitemapPage />;
+      // Long-tail pages also show the converter with targeted content
+      case 'jpg-to-pdf-100kb':
+      case 'jpg-to-pdf-high-quality':
+      case 'batch-jpg-to-pdf':
+      case 'jpg-to-pdf-for-bank':
+        return <ConverterSection />;
       default: return <ConverterSection />;
     }
   };

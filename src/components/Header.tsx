@@ -17,8 +17,8 @@ export function Header({ onNavigate }: HeaderProps) {
     { path: '/', label: 'Home' },
     { path: '/jpg-to-pdf', label: 'JPG to PDF' },
     { path: '/png-to-pdf', label: 'PNG to PDF' },
-    { path: '/image-to-pdf', label: 'Image to PDF' },
-    { path: '/blog', label: 'Blog' },
+    { path: '/batch-jpg-to-pdf', label: 'Batch Convert' },
+    { path: '/how-to-convert-jpg-to-pdf', label: 'How-To' },
     { path: '/faq', label: 'FAQ' },
   ];
 
@@ -30,8 +30,10 @@ export function Header({ onNavigate }: HeaderProps) {
             href="/" 
             onClick={(e) => handleNavClick(e, '/')}
             className="text-2xl font-bold flex items-center gap-2 hover:text-blue-100 transition-colors"
+            title="ConvertJPGtoPDF.online - Free Online JPG to PDF Converter"
+            aria-label="Go to homepage - ConvertJPGtoPDF.online"
           >
-            <span className="text-3xl">📄</span>
+            <span className="text-3xl" role="img" aria-label="PDF document icon">📄</span>
             <span>JPG to PDF</span>
           </a>
 

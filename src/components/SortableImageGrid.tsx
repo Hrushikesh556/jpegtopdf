@@ -91,13 +91,16 @@ function SortableItem({ image, index, onRemove }: SortableItemProps) {
           </div>
         )}
         
-        {/* Image */}
+        {/* Image with proper alt text for SEO */}
         <img
           src={image.preview || image.dataUrl}
-          alt={image.name}
+          alt={`Page ${index + 1}: ${image.name} - Image to be converted to PDF`}
+          title={`${image.name} - Page ${index + 1} of your PDF document`}
           className={`w-full h-full object-cover ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setImageLoaded(true)}
           draggable={false}
+          loading="lazy"
+          decoding="async"
         />
         
         {/* Drag Overlay Hint */}

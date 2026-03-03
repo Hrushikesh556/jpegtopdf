@@ -30,7 +30,11 @@
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/terms-of-service", "destination": "/terms-of-service.html" },
     { "source": "/how-to-convert-jpg-to-pdf", "destination": "/how-to-convert-jpg-to-pdf.html" },
-    { "source": "/sitemap", "destination": "/sitemap-page.html" }
+    { "source": "/sitemap", "destination": "/sitemap-page.html" },
+    { "source": "/jpg-to-pdf-100kb", "destination": "/index.html" },
+    { "source": "/jpg-to-pdf-high-quality", "destination": "/index.html" },
+    { "source": "/batch-jpg-to-pdf", "destination": "/index.html" },
+    { "source": "/jpg-to-pdf-for-bank", "destination": "/index.html" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
@@ -46,6 +50,15 @@
     { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
     { "source": "/terms", "destination": "/terms-of-service", "permanent": true },
     { "source": "/how-to", "destination": "/how-to-convert-jpg-to-pdf", "permanent": true },
-    { "source": "/guide", "destination": "/how-to-convert-jpg-to-pdf", "permanent": true }
+    { "source": "/guide", "destination": "/how-to-convert-jpg-to-pdf", "permanent": true },
+    { "source": "/convert-jpg-to-pdf-100kb", "destination": "/jpg-to-pdf-100kb", "permanent": true },
+    { "source": "/jpg-pdf-100kb", "destination": "/jpg-to-pdf-100kb", "permanent": true },
+    { "source": "/jpg-to-pdf-without-quality-loss", "destination": "/jpg-to-pdf-high-quality", "permanent": true },
+    { "source": "/jpg-to-pdf-no-compression", "destination": "/jpg-to-pdf-high-quality", "permanent": true },
+    { "source": "/batch-convert-jpg-to-pdf", "destination": "/batch-jpg-to-pdf", "permanent": true },
+    { "source": "/multiple-jpg-to-pdf", "destination": "/batch-jpg-to-pdf", "permanent": true },
+    { "source": "/jpg-to-pdf-bank-upload", "destination": "/jpg-to-pdf-for-bank", "permanent": true },
+    { "source": "/jpg-to-pdf-kyc", "destination": "/jpg-to-pdf-for-bank", "permanent": true },
+    { "source": "/jpg-to-pdf-government", "destination": "/jpg-to-pdf-for-bank", "permanent": true }
   ]
 }
