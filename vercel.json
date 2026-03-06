@@ -34,7 +34,10 @@
     { "source": "/jpg-to-pdf-100kb", "destination": "/index.html" },
     { "source": "/jpg-to-pdf-high-quality", "destination": "/index.html" },
     { "source": "/batch-jpg-to-pdf", "destination": "/index.html" },
-    { "source": "/jpg-to-pdf-for-bank", "destination": "/index.html" }
+    { "source": "/jpg-to-pdf-for-bank", "destination": "/index.html" },
+    { "source": "/png-to-pdf-100kb", "destination": "/index.html" },
+    { "source": "/png-to-pdf-high-quality", "destination": "/index.html" },
+    { "source": "/multiple-png-to-pdf", "destination": "/index.html" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
@@ -59,6 +62,14 @@
     { "source": "/multiple-jpg-to-pdf", "destination": "/batch-jpg-to-pdf", "permanent": true },
     { "source": "/jpg-to-pdf-bank-upload", "destination": "/jpg-to-pdf-for-bank", "permanent": true },
     { "source": "/jpg-to-pdf-kyc", "destination": "/jpg-to-pdf-for-bank", "permanent": true },
-    { "source": "/jpg-to-pdf-government", "destination": "/jpg-to-pdf-for-bank", "permanent": true }
+    { "source": "/jpg-to-pdf-government", "destination": "/jpg-to-pdf-for-bank", "permanent": true },
+    { "source": "/png-pdf-100kb", "destination": "/png-to-pdf-100kb", "permanent": true },
+    { "source": "/convert-png-to-pdf-100kb", "destination": "/png-to-pdf-100kb", "permanent": true },
+    { "source": "/png-to-pdf-without-quality-loss", "destination": "/png-to-pdf-high-quality", "permanent": true },
+    { "source": "/png-to-pdf-lossless", "destination": "/png-to-pdf-high-quality", "permanent": true },
+    { "source": "/combine-png-to-pdf", "destination": "/multiple-png-to-pdf", "permanent": true },
+    { "source": "/merge-png-to-pdf", "destination": "/multiple-png-to-pdf", "permanent": true },
+    { "source": "/batch-png-to-pdf", "destination": "/multiple-png-to-pdf", "permanent": true },
+    { "source": "/multiplepngtopdf", "destination": "/multiple-png-to-pdf", "permanent": true }
   ]
 }

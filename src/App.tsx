@@ -19,75 +19,99 @@ interface PageSEO {
 
 const pageSEOData: Record<string, PageSEO> = {
   home: {
-    title: 'Convert JPG to PDF Online Free - Fast, Secure, No Signup | ConvertJPGtoPDF',
-    description: 'Convert JPG to PDF online FREE in seconds! No signup, no watermarks, no file limits. 100% secure client-side processing - your images never leave your device. Works on mobile & desktop.',
+    title: 'PNG to PDF Converter | JPG to PDF Converter - Free Online, No Signup',
+    description: 'Free PNG to PDF converter & JPG to PDF converter online. Convert images to PDF instantly - no signup, no watermarks, no limits. 100% secure, works on mobile & desktop.',
     canonical: 'https://convertjpgtopdf.online/',
-    h1: 'Convert JPG to PDF Online - Free, Fast & Secure',
-    keywords: 'jpg to pdf, convert jpg to pdf, jpg to pdf converter free, image to pdf, jpg to pdf online, free jpg to pdf converter',
+    h1: 'PNG to PDF & JPG to PDF Converter - Free Online Tool',
+    keywords: 'png to pdf, png to pdf converter, jpg to pdf converter, jpg to pdf, image to pdf, convert png to pdf, convert jpg to pdf free',
     ogImage: 'https://convertjpgtopdf.online/og-home.png'
   },
   'jpg-to-pdf': {
-    title: 'JPG to PDF Converter - Free Online Tool, No Registration | 2024',
-    description: 'Best free JPG to PDF converter online. Transform JPG images to PDF documents instantly. No signup, no watermarks, unlimited conversions. 100% private & secure.',
+    title: 'JPG to PDF Converter Free Online - Convert JPG to PDF Instantly | 2024',
+    description: 'Best free JPG to PDF converter online. Convert JPG images to PDF in seconds - no signup, no watermarks, unlimited conversions. 100% private & secure. Works on all devices.',
     canonical: 'https://convertjpgtopdf.online/jpg-to-pdf',
-    h1: 'JPG to PDF Converter - Free & Unlimited',
-    keywords: 'jpg to pdf converter, convert jpg to pdf free, jpg to pdf online free, jpg image to pdf, free jpg to pdf',
+    h1: 'JPG to PDF Converter - Free, Fast & Unlimited',
+    keywords: 'jpg to pdf converter, convert jpg to pdf, jpg to pdf free, jpg to pdf online, jpg image to pdf converter, free jpg to pdf converter',
     ogImage: 'https://convertjpgtopdf.online/og-jpg-to-pdf.png'
   },
   'png-to-pdf': {
-    title: 'PNG to PDF Converter Free Online - Preserve Quality & Transparency',
-    description: 'Convert PNG to PDF online free while preserving transparency and quality. Combine multiple PNG files into one PDF. No signup, instant download, works on all devices.',
+    title: 'PNG to PDF Converter Free Online - Convert PNG to PDF High Quality',
+    description: 'Free PNG to PDF converter online. Convert PNG images to PDF while preserving transparency & quality. Combine multiple PNG files into one PDF. No signup, instant download.',
     canonical: 'https://convertjpgtopdf.online/png-to-pdf',
-    h1: 'PNG to PDF Converter - Free & High Quality',
-    keywords: 'png to pdf, convert png to pdf, png to pdf converter, png to pdf free, combine png to pdf',
+    h1: 'PNG to PDF Converter - Free Online, High Quality',
+    keywords: 'png to pdf, png to pdf converter, convert png to pdf, png to pdf free, png to pdf online, combine png to pdf, png to pdf high quality',
     ogImage: 'https://convertjpgtopdf.online/og-png-to-pdf.png'
   },
   'jpeg-to-pdf': {
-    title: 'JPEG to PDF Converter - Convert Without Losing Quality | Free Online',
-    description: 'Convert JPEG to PDF without losing image quality. Free online JPEG to PDF converter with no registration. Perfect for photos, scans, and professional documents.',
+    title: 'JPEG to PDF Converter Free - Convert JPEG to PDF Without Losing Quality',
+    description: 'Free JPEG to PDF converter online. Convert JPEG images to PDF without quality loss. No registration required. Perfect for photos, scans, and professional documents.',
     canonical: 'https://convertjpgtopdf.online/jpeg-to-pdf',
-    h1: 'JPEG to PDF - Convert Without Losing Quality',
-    keywords: 'jpeg to pdf, convert jpeg to pdf, jpeg to pdf converter, jpeg to pdf free, jpeg to pdf no quality loss',
+    h1: 'JPEG to PDF Converter - No Quality Loss',
+    keywords: 'jpeg to pdf, jpeg to pdf converter, convert jpeg to pdf, jpeg to pdf free, jpeg to pdf no quality loss',
     ogImage: 'https://convertjpgtopdf.online/og-jpeg-to-pdf.png'
   },
   'image-to-pdf': {
-    title: 'Image to PDF Converter - Convert Any Image Format to PDF Free',
-    description: 'Convert any image to PDF online free. Support for JPG, PNG, JPEG formats. Combine multiple images into one PDF document. No signup, no limits, instant conversion.',
+    title: 'Image to PDF Converter Free - Convert Any Image to PDF Online',
+    description: 'Free image to PDF converter. Convert JPG, PNG, JPEG images to PDF online. Combine multiple images into one PDF. No signup, no limits, instant conversion.',
     canonical: 'https://convertjpgtopdf.online/image-to-pdf',
     h1: 'Image to PDF Converter - All Formats Supported',
-    keywords: 'image to pdf, convert image to pdf, photo to pdf, picture to pdf, image to pdf converter free',
+    keywords: 'image to pdf, image to pdf converter, convert image to pdf, photo to pdf, picture to pdf converter free',
     ogImage: 'https://convertjpgtopdf.online/og-image-to-pdf.png'
   },
   'jpg-to-pdf-100kb': {
-    title: 'Convert JPG to PDF Under 100KB - Compress PDF for Upload | Free',
-    description: 'Create compressed PDFs under 100KB from JPG images. Perfect for government form uploads, bank KYC documents, and email attachments with size restrictions. Free tool, no signup.',
+    title: 'JPG to PDF Converter 100KB - Compress JPG to PDF Under 100KB Free',
+    description: 'JPG to PDF converter 100KB - create compressed PDFs under 100KB from images. Perfect for bank uploads, KYC documents, government forms. Free online tool, no signup.',
     canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-100kb',
-    h1: 'Convert JPG to PDF Under 100KB',
-    keywords: 'jpg to pdf 100kb, compress jpg to pdf, small pdf from jpg, pdf under 100kb, compress pdf for upload',
+    h1: 'JPG to PDF Converter 100KB - Compress for Upload',
+    keywords: 'jpg to pdf converter 100 kb, jpg to pdf 100kb, compress jpg to pdf 100kb, pdf under 100kb, jpg to pdf small size',
     ogImage: 'https://convertjpgtopdf.online/og-100kb.png'
+  },
+  'png-to-pdf-100kb': {
+    title: 'PNG to PDF Converter 100KB - Compress PNG to PDF Under 100KB Free',
+    description: 'PNG to PDF converter 100KB - compress PNG images to PDF under 100KB for bank uploads, government forms & applications. Free online tool with size control.',
+    canonical: 'https://convertjpgtopdf.online/png-to-pdf-100kb',
+    h1: 'PNG to PDF Converter 100KB - Compress for Upload',
+    keywords: 'png to pdf converter 100 kb, png to pdf 100kb, compress png to pdf, png to pdf small size, png to pdf for bank',
+    ogImage: 'https://convertjpgtopdf.online/og-png-100kb.png'
+  },
+  'png-to-pdf-high-quality': {
+    title: 'PNG to PDF High Quality - Convert PNG to PDF Without Losing Quality',
+    description: 'Convert PNG to PDF high quality - preserve transparency, colors & resolution. Lossless PNG to PDF conversion. No compression, no quality loss. Free online converter.',
+    canonical: 'https://convertjpgtopdf.online/png-to-pdf-high-quality',
+    h1: 'PNG to PDF High Quality - Lossless Conversion',
+    keywords: 'png to pdf high quality, png to pdf without losing quality, lossless png to pdf, png to pdf preserve transparency',
+    ogImage: 'https://convertjpgtopdf.online/og-png-high-quality.png'
+  },
+  'multiple-png-to-pdf': {
+    title: 'Multiple PNG to PDF - Combine Multiple PNG Images to One PDF Free',
+    description: 'Convert multiple PNG to PDF - combine 50+ PNG images into one PDF document. Free online tool with drag & drop reorder. No limits, no signup, instant download.',
+    canonical: 'https://convertjpgtopdf.online/multiple-png-to-pdf',
+    h1: 'Multiple PNG to PDF - Combine Images to One PDF',
+    keywords: 'multiple png to pdf, combine png to pdf, merge png to pdf, multiple png files to pdf, batch png to pdf',
+    ogImage: 'https://convertjpgtopdf.online/og-multiple-png.png'
   },
   'jpg-to-pdf-high-quality': {
     title: 'Convert JPG to PDF Without Losing Quality - Lossless Conversion Free',
-    description: 'Convert JPG to PDF without any quality loss. Preserve original image resolution and clarity. No compression artifacts, no degradation. Free lossless JPG to PDF converter.',
+    description: 'Convert JPG to PDF without quality loss. Preserve original image resolution, colors & clarity. No compression artifacts. Free lossless JPG to PDF converter online.',
     canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-high-quality',
     h1: 'Convert JPG to PDF Without Losing Quality',
-    keywords: 'jpg to pdf without losing quality, lossless jpg to pdf, high quality pdf from jpg, jpg to pdf no compression',
+    keywords: 'jpg to pdf without losing quality, lossless jpg to pdf, high quality jpg to pdf, jpg to pdf no compression',
     ogImage: 'https://convertjpgtopdf.online/og-high-quality.png'
   },
   'batch-jpg-to-pdf': {
-    title: 'Batch Convert JPG to PDF - Multiple Images to One PDF Free | No Limit',
-    description: 'Batch convert multiple JPG images to PDF at once. No file limit, no daily caps. Combine 50+ images into a single PDF document. Free batch conversion tool, no signup required.',
+    title: 'Batch Convert JPG to PDF Free - Multiple Images to One PDF No Limit',
+    description: 'Batch convert JPG to PDF free with no limits. Convert 50+ images to one PDF instantly. No file size limits, no watermarks, no registration. Drag & drop reorder.',
     canonical: 'https://convertjpgtopdf.online/batch-jpg-to-pdf',
     h1: 'Batch Convert JPG to PDF - Free, No Limits',
-    keywords: 'batch jpg to pdf, multiple jpg to pdf, bulk jpg to pdf, combine multiple jpg to pdf, batch convert images',
+    keywords: 'batch jpg to pdf, multiple jpg to pdf, bulk jpg to pdf, combine jpg to pdf, batch convert images to pdf free',
     ogImage: 'https://convertjpgtopdf.online/og-batch.png'
   },
   'jpg-to-pdf-for-bank': {
-    title: 'Convert JPG to PDF for Bank Upload - KYC & Government Documents',
-    description: 'Create PDFs from JPG images perfect for bank uploads, KYC verification, loan applications, and government form submissions. Correct format and size for official document requirements.',
+    title: 'JPG to PDF for Bank Upload - Convert Images for KYC & Documents',
+    description: 'Convert JPG to PDF for bank uploads, KYC verification, loan applications & government forms. Create properly formatted PDFs that meet official document requirements. Free online.',
     canonical: 'https://convertjpgtopdf.online/jpg-to-pdf-for-bank',
-    h1: 'Convert JPG to PDF for Bank & Government Forms',
-    keywords: 'jpg to pdf for bank, pdf for kyc, jpg to pdf government forms, pdf for loan application, document upload pdf',
+    h1: 'JPG to PDF for Bank & Government Documents',
+    keywords: 'jpg to pdf for bank, jpg to pdf for kyc, jpg to pdf for government, pdf for loan application, document upload pdf',
     ogImage: 'https://convertjpgtopdf.online/og-bank.png'
   },
   blog: {
@@ -227,11 +251,15 @@ const getPageFromPath = (path: string): string => {
     '/terms-of-service': 'terms',
     '/how-to-convert-jpg-to-pdf': 'howto',
     '/sitemap': 'sitemap',
-    // Long-tail keyword pages
+    // Long-tail keyword pages - JPG
     '/jpg-to-pdf-100kb': 'jpg-to-pdf-100kb',
     '/jpg-to-pdf-high-quality': 'jpg-to-pdf-high-quality',
     '/batch-jpg-to-pdf': 'batch-jpg-to-pdf',
     '/jpg-to-pdf-for-bank': 'jpg-to-pdf-for-bank',
+    // Long-tail keyword pages - PNG
+    '/png-to-pdf-100kb': 'png-to-pdf-100kb',
+    '/png-to-pdf-high-quality': 'png-to-pdf-high-quality',
+    '/multiple-png-to-pdf': 'multiple-png-to-pdf',
   };
   return routes[path] || 'home';
 };
@@ -368,49 +396,64 @@ export function App() {
   const getConverterContent = () => {
     const content: Record<string, { h1: string; subtitle: string; keywords?: string[] }> = {
       'home': {
-        h1: 'Convert JPG to PDF Online - Free, Fast & Secure',
-        subtitle: 'Convert your JPG, JPEG, and PNG images to PDF instantly. No signup required, no watermarks, no limits. 100% private - files never leave your device.',
-        keywords: ['free', 'fast', 'secure', 'no signup', 'no watermarks']
+        h1: 'PNG to PDF & JPG to PDF Converter - Free Online Tool',
+        subtitle: 'Convert PNG, JPG, JPEG images to PDF instantly. Free PNG to PDF converter & JPG to PDF converter - no signup, no watermarks, no limits. 100% private.',
+        keywords: ['png to pdf', 'jpg to pdf', 'free converter', 'no signup', 'no watermarks']
       },
       'jpg-to-pdf': {
-        h1: 'JPG to PDF Converter - Free & Unlimited',
-        subtitle: 'Transform your JPG images into professional PDF documents in seconds. No file size limits, no daily conversion caps.',
-        keywords: ['unlimited', 'professional', 'instant']
+        h1: 'JPG to PDF Converter - Free, Fast & Unlimited',
+        subtitle: 'Best free JPG to PDF converter online. Transform JPG images into professional PDF documents in seconds. No file size limits, no daily caps.',
+        keywords: ['jpg to pdf converter', 'unlimited', 'professional', 'instant']
       },
       'png-to-pdf': {
-        h1: 'PNG to PDF Converter - Free & High Quality',
-        subtitle: 'Convert PNG images to PDF while preserving quality. Perfect for screenshots, graphics, and transparent images.',
-        keywords: ['high quality', 'transparency', 'screenshots']
+        h1: 'PNG to PDF Converter - Free Online, High Quality',
+        subtitle: 'Free PNG to PDF converter online. Convert PNG images to PDF while preserving transparency & quality. Perfect for screenshots, graphics, and logos.',
+        keywords: ['png to pdf converter', 'high quality', 'preserve transparency', 'screenshots']
       },
       'jpeg-to-pdf': {
-        h1: 'JPEG to PDF - Convert Without Losing Quality',
-        subtitle: 'Turn your JPEG photos into PDF documents without quality loss. Ideal for documents, scans, and digital photos.',
-        keywords: ['no quality loss', 'photos', 'scans']
+        h1: 'JPEG to PDF Converter - No Quality Loss',
+        subtitle: 'Free JPEG to PDF converter. Turn your JPEG photos into PDF documents without quality loss. Ideal for documents, scans, and digital photos.',
+        keywords: ['jpeg to pdf', 'no quality loss', 'photos', 'scans']
       },
       'image-to-pdf': {
         h1: 'Image to PDF Converter - All Formats Supported',
-        subtitle: 'Convert any image format (JPG, PNG, JPEG) to PDF. Combine multiple images into one professional document.',
-        keywords: ['all formats', 'combine', 'professional']
+        subtitle: 'Free image to PDF converter. Convert any image format (JPG, PNG, JPEG) to PDF. Combine multiple images into one professional document.',
+        keywords: ['image to pdf', 'all formats', 'combine', 'professional']
       },
       'jpg-to-pdf-100kb': {
-        h1: 'Convert JPG to PDF Under 100KB',
-        subtitle: 'Create compressed PDFs under 100KB - perfect for government forms, bank uploads, and email attachments with size restrictions.',
-        keywords: ['100kb', 'compressed', 'government forms', 'bank upload']
+        h1: 'JPG to PDF Converter 100KB - Compress for Upload',
+        subtitle: 'JPG to PDF converter 100KB - create compressed PDFs under 100KB. Perfect for government forms, bank KYC uploads, and email attachments with size restrictions.',
+        keywords: ['jpg to pdf 100kb', 'compress', 'government forms', 'bank upload', 'KYC']
+      },
+      'png-to-pdf-100kb': {
+        h1: 'PNG to PDF Converter 100KB - Compress for Upload',
+        subtitle: 'PNG to PDF converter 100KB - compress PNG images to PDF under 100KB for bank uploads, government forms & job applications. Free with size control.',
+        keywords: ['png to pdf 100kb', 'compress', 'bank upload', 'government forms']
+      },
+      'png-to-pdf-high-quality': {
+        h1: 'PNG to PDF High Quality - Lossless Conversion',
+        subtitle: 'Convert PNG to PDF high quality - preserve transparency, colors & original resolution. Lossless conversion with no compression artifacts.',
+        keywords: ['png to pdf high quality', 'lossless', 'preserve transparency', 'no compression']
+      },
+      'multiple-png-to-pdf': {
+        h1: 'Multiple PNG to PDF - Combine Images to One PDF',
+        subtitle: 'Convert multiple PNG to PDF - combine 50+ PNG images into one PDF document with drag & drop reorder. Free, no limits, instant download.',
+        keywords: ['multiple png to pdf', 'combine', 'batch convert', '50+ images', 'no limits']
       },
       'jpg-to-pdf-high-quality': {
         h1: 'Convert JPG to PDF Without Losing Quality',
-        subtitle: 'Preserve every pixel of your original image. No compression, no quality loss. Perfect for professional documents and prints.',
-        keywords: ['high quality', 'no compression', 'professional']
+        subtitle: 'Lossless JPG to PDF conversion. Preserve every pixel of your original image - no compression, no quality loss. Perfect for professional documents.',
+        keywords: ['jpg to pdf high quality', 'lossless', 'no compression', 'professional']
       },
       'batch-jpg-to-pdf': {
         h1: 'Batch Convert JPG to PDF - Free, No Limits',
-        subtitle: 'Convert 50+ images at once into a single PDF. No file limits, no daily caps, completely free. Perfect for large projects.',
-        keywords: ['batch', 'multiple files', 'no limits', '50+ images']
+        subtitle: 'Batch convert multiple JPG images to PDF at once. Convert 50+ images into a single PDF. No file limits, no daily caps, completely free.',
+        keywords: ['batch jpg to pdf', 'multiple files', 'no limits', '50+ images', 'free']
       },
       'jpg-to-pdf-for-bank': {
-        h1: 'Convert JPG to PDF for Bank & Government Forms',
-        subtitle: 'Create PDFs perfectly formatted for KYC verification, loan applications, passport submissions, and official document uploads.',
-        keywords: ['bank upload', 'KYC', 'government forms', 'official documents']
+        h1: 'JPG to PDF for Bank & Government Documents',
+        subtitle: 'Convert JPG to PDF for bank uploads, KYC verification, loan applications & government form submissions. Properly formatted PDFs for official requirements.',
+        keywords: ['jpg to pdf bank', 'KYC', 'government forms', 'loan application', 'official documents']
       }
     };
     return content[currentPage] || content.home;
@@ -2305,11 +2348,15 @@ export function App() {
       case 'terms': return <TermsPage />;
       case 'howto': return <HowToPage />;
       case 'sitemap': return <SitemapPage />;
-      // Long-tail pages also show the converter with targeted content
+      // Long-tail JPG pages - show converter with targeted content
       case 'jpg-to-pdf-100kb':
       case 'jpg-to-pdf-high-quality':
       case 'batch-jpg-to-pdf':
       case 'jpg-to-pdf-for-bank':
+      // Long-tail PNG pages - show converter with targeted content
+      case 'png-to-pdf-100kb':
+      case 'png-to-pdf-high-quality':
+      case 'multiple-png-to-pdf':
         return <ConverterSection />;
       default: return <ConverterSection />;
     }
