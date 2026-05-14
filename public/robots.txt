@@ -1,48 +1,10 @@
-# robots.txt for https://convertjpgtopdf.online/
-
 User-agent: *
 Allow: /
 
-# Sitemap
+# Block internal build artifacts if ever exposed
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.map$
+
 Sitemap: https://convertjpgtopdf.online/sitemap.xml
-
-# Disallow admin/system paths (none exist, but good practice)
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-# Block bad bots
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-# Crawl delay for others
-User-agent: *
-Crawl-delay: 1
+Host: convertjpgtopdf.online
