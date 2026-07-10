@@ -1,21 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6"/>
-      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </linearGradient>
   </defs>
   <!-- Background -->
-  <rect width="100" height="100" rx="20" fill="url(#bgGrad)"/>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="96" fill="url(#shine)"/>
   <!-- Document icon -->
-  <path d="M30 15 L30 85 L70 85 L70 35 L50 15 Z" fill="white" stroke="none"/>
-  <path d="M50 15 L50 35 L70 35" fill="none" stroke="#3b82f6" stroke-width="2"/>
-  <!-- Image icon inside -->
-  <rect x="38" y="45" width="24" height="20" rx="2" fill="#3b82f6"/>
-  <circle cx="44" cy="51" r="3" fill="#fbbf24"/>
-  <path d="M38 60 L46 54 L52 58 L58 52 L62 56 L62 63 L38 63 Z" fill="#22c55e"/>
+  <g transform="translate(128, 80)">
+    <rect x="0" y="0" width="200" height="260" rx="16" fill="white" opacity="0.95"/>
+    <rect x="24" y="36" width="152" height="12" rx="6" fill="#e2e8f0"/>
+    <rect x="24" y="60" width="120" height="12" rx="6" fill="#e2e8f0"/>
+    <rect x="24" y="84" width="140" height="12" rx="6" fill="#e2e8f0"/>
+    <!-- Image placeholder -->
+    <rect x="24" y="116" width="152" height="100" rx="12" fill="#eef2ff"/>
+    <circle cx="60" cy="148" r="16" fill="#818cf8" opacity="0.5"/>
+    <path d="M24 196 L76 156 L120 184 L152 164 L176 196 L176 216 L24 216Z" fill="#a5b4fc" opacity="0.6"/>
+  </g>
   <!-- Arrow -->
-  <path d="M76 50 L88 50 M83 45 L88 50 L83 55" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- PDF text -->
-  <text x="50" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">PDF</text>
+  <g transform="translate(240, 340)">
+    <path d="M0 30 L40 30 L40 10 L70 40 L40 70 L40 50 L0 50Z" fill="white" opacity="0.9"/>
+  </g>
+  <!-- PDF badge -->
+  <g transform="translate(310, 310)">
+    <rect x="0" y="0" width="120" height="80" rx="14" fill="white" opacity="0.95"/>
+    <text x="60" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="800" fill="#4f46e5">PDF</text>
+  </g>
 </svg>

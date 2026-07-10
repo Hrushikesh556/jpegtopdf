@@ -1,48 +1,41 @@
-# robots.txt for https://convertjpgtopdf.online/
+# robots.txt for convertjpgtopdf.online
+# Last updated: 2025-07-11
 
 User-agent: *
 Allow: /
-
-# Sitemap
-Sitemap: https://convertjpgtopdf.online/sitemap.xml
-
-# Disallow admin/system paths (none exist, but good practice)
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
 
-# Allow all major search engines
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://convertjpgtopdf.online/sitemap.xml
+
+# Specific bot instructions
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
+Crawl-delay: 1
 
 User-agent: YandexBot
 Allow: /
+Crawl-delay: 2
 
-# Block bad bots
-User-agent: AhrefsBot
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Block AI training crawlers (optional - remove if you want to allow)
+User-agent: GPTBot
 Disallow: /
 
-User-agent: SemrushBot
+User-agent: ChatGPT-User
 Disallow: /
 
-User-agent: MJ12bot
+User-agent: CCBot
 Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-# Crawl delay for others
-User-agent: *
-Crawl-delay: 1

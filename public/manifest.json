@@ -1,56 +1,40 @@
 {
-  "name": "JPG to PDF Converter - Free Online Tool",
+  "name": "JPG to PDF Converter - ConvertJPGtoPDF.online",
   "short_name": "JPG to PDF",
-  "description": "Convert JPG, JPEG, and PNG images to PDF online for free. No signup, no watermarks, 100% secure.",
+  "description": "Free online JPG to PDF and PNG to PDF converter. No signup, no watermarks. Convert images to PDF instantly.",
   "start_url": "/",
-  "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
-  "lang": "en-US",
-  "dir": "ltr",
-  "categories": ["utilities", "productivity"],
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/favicon.svg",
+      "src": "/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
+  "categories": ["utilities", "productivity"],
   "screenshots": [
     {
       "src": "/og-image.png",
       "sizes": "1200x630",
       "type": "image/png",
-      "label": "JPG to PDF Converter Homepage"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Convert JPG to PDF",
-      "short_name": "JPG→PDF",
-      "description": "Convert JPG images to PDF",
-      "url": "/jpg-to-pdf",
-      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
-    },
-    {
-      "name": "Convert PNG to PDF",
-      "short_name": "PNG→PDF",
-      "description": "Convert PNG images to PDF",
-      "url": "/png-to-pdf",
-      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+      "form_factor": "wide",
+      "label": "JPG to PDF Converter - Free Online Tool"
     }
   ],
   "related_applications": [],
