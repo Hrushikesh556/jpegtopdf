@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="96" fill="url(#shine)"/>
+  <!-- Document icon -->
+  <g transform="translate(128, 80)">
+    <rect x="0" y="0" width="200" height="260" rx="16" fill="white" opacity="0.95"/>
+    <rect x="24" y="36" width="152" height="12" rx="6" fill="#e2e8f0"/>
+    <rect x="24" y="60" width="120" height="12" rx="6" fill="#e2e8f0"/>
+    <rect x="24" y="84" width="140" height="12" rx="6" fill="#e2e8f0"/>
+    <!-- Image placeholder -->
+    <rect x="24" y="116" width="152" height="100" rx="12" fill="#eef2ff"/>
+    <circle cx="60" cy="148" r="16" fill="#818cf8" opacity="0.5"/>
+    <path d="M24 196 L76 156 L120 184 L152 164 L176 196 L176 216 L24 216Z" fill="#a5b4fc" opacity="0.6"/>
+  </g>
+  <!-- Arrow -->
+  <g transform="translate(240, 340)">
+    <path d="M0 30 L40 30 L40 10 L70 40 L40 70 L40 50 L0 50Z" fill="white" opacity="0.9"/>
+  </g>
+  <!-- PDF badge -->
+  <g transform="translate(310, 310)">
+    <rect x="0" y="0" width="120" height="80" rx="14" fill="white" opacity="0.95"/>
+    <text x="60" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="800" fill="#4f46e5">PDF</text>
+  </g>
+</svg>
