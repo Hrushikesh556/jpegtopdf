@@ -1,2 +1,0 @@
-# jpegtopdf
-pdf tool
